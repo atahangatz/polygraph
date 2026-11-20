@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Polygraph Guide</title>
+<meta name="description" content="How to install and use Polygraph, the Blender add-on that shows the vertex count your engine sees and checks it against a budget.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root {
+  --bg: #F6F4FB; --surface: #FFFFFF; --sunk: #EEEAF8; --edge: #D5CDEF; --ink: #241A40; --ink-2: #51476F;
+  --ruling: #6B57C9; --pen: #457F13; --near: #AB5C18; --over: #DB2150; --grid: rgba(107, 87, 201, 0.10);
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1C1533; --surface: #241A40; --sunk: #2B2050; --edge: #4A3B82; --ink: #ECE9F5; --ink-2: #BDB5D8;
+  --ruling: #9D8CF0; --pen: #99FF42; --near: #FF8A24; --over: #FF3D6E; --grid: rgba(157, 140, 240, 0.09); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #1C1533; --surface: #241A40; --sunk: #2B2050; --edge: #4A3B82; --ink: #ECE9F5; --ink-2: #BDB5D8;
+  --ruling: #9D8CF0; --pen: #99FF42; --near: #FF8A24; --over: #FF3D6E; --grid: rgba(157, 140, 240, 0.09); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.62 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: var(--ruling); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; border-radius: 3px; }
+code, kbd, pre { font-family: var(--mono); font-size: 0.88em; }
+code { background: var(--sunk); padding: 1px 5px; border-radius: 4px; }
+kbd { border: 1px solid var(--edge); border-bottom-width: 2px; padding: 0 5px; border-radius: 4px; background: var(--surface); }
+pre { background: var(--sunk); border: 1px solid var(--edge); border-radius: 8px; padding: 14px 16px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; padding: 0; }
+
+.masthead {
+  background-color: var(--surface);
+  background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px; border-bottom: 1px solid var(--edge);
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px);
+}
+.masthead .in { max-width: 1160px; margin: 0 auto; padding-block: 44px 36px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: 0.09em; text-transform: uppercase; color: var(--ruling); }
+h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.02; letter-spacing: -0.02em; margin: 14px 0 10px; font-weight: 600; }
+.lede { font-size: 19px; color: var(--ink-2); margin: 0; max-width: 40em; text-wrap: balance; }
+.meta { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 6px 18px; font: 13px/1.4 var(--mono); color: var(--ink-2); }
+.meta b { color: var(--ink); font-weight: 500; }
+.trace { display: block; margin-top: 26px; width: 100%; max-width: 520px; height: 40px; }
+
+.wrap { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px;
+  padding-block: 36px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+nav.index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; }
+nav.index ol { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: n; }
+nav.index li { counter-increment: n; }
+nav.index a { display: flex; gap: 10px; padding: 3px 0; color: var(--ink-2); text-decoration: none; font-size: 14px; }
+nav.index a::before { content: counter(n, decimal-leading-zero); font: 12px/1.9 var(--mono); color: var(--ruling); opacity: 0.7; }
+nav.index a:hover { color: var(--ink); }
+main { min-width: 0; max-width: 760px; }
+section { padding-top: 8px; margin-bottom: 52px; scroll-margin-top: 20px; }
+h2 { font-size: 28px; letter-spacing: -0.012em; line-height: 1.2; margin: 0 0 14px; font-weight: 600; text-wrap: balance;
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+h2 .no { font: 500 13px var(--mono); color: var(--ruling); }
+h3 { font-size: 18px; margin: 28px 0 8px; font-weight: 600; }
+p, li { max-width: 68ch; }
+.muted { color: var(--ink-2); }
+ol.steps { padding-left: 0; list-style: none; counter-reset: s; }
+ol.steps li { counter-increment: s; position: relative; padding-left: 40px; margin: 8px 0; }
+ol.steps li::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 50%;
+  border: 1.5px solid var(--ruling); color: var(--ruling); font: 500 13px/23px var(--mono); text-align: center; }
+.aside { border-left: 3px solid var(--near); background: var(--sunk); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 18px 0; }
+.aside p { margin: 0; }
+
+.tag { display: inline-block; font: 500 10.5px/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 6px 3px;
+  border-radius: 4px; border: 1px solid currentColor; vertical-align: 2px; margin-left: 6px; white-space: nowrap; }
+.tag.pro { color: var(--ruling); }
+.tag.studio { color: var(--pen); }
+.tag.free { color: var(--ink-2); }
+.tag.note { color: var(--ink-2); margin-left: 0; }
+.tag.fault { color: var(--over); margin-left: 0; }
+
+dl.panels { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 20px; margin: 16px 0; }
+dl.panels dt { font-weight: 600; }
+dl.panels dd { margin: 0; color: var(--ink-2); }
+
+.verdicts { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.verdict { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid var(--edge); border-radius: 8px;
+  background: var(--surface); font-size: 14px; }
+.verdict i { width: 34px; height: 6px; border-radius: 3px; display: inline-block; }
+
+.tablewrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--edge); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th { text-align: left; font: 500 11px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ruling);
+  padding: 12px 14px; border-bottom: 1px solid var(--edge); white-space: nowrap; }
+td { padding: 11px 14px; border-bottom: 1px solid var(--edge); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.limits { font: 13px/1.6 var(--mono); font-variant-numeric: tabular-nums; min-width: 190px; }
+.lim { display: inline-block; min-width: 86px; color: var(--ink-2); font-family: var(--sans); font-size: 12px; }
+.bname { font-weight: 600; }
+.bnote { display: block; color: var(--ink-2); font-size: 13px; margin-top: 3px; max-width: 46ch; }
+td.src { font-size: 13px; white-space: nowrap; }
+.checked { display: block; font: 12px var(--mono); color: var(--ink-2); }
+.cname { font-weight: 600; white-space: nowrap; }
+table.compact td, table.compact th { padding: 9px 12px; }
+td.yes { color: var(--pen); font-family: var(--mono); }
+td.no { color: var(--ink-2); font-family: var(--mono); }
+
+.editions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
+.ed { border: 1px solid var(--edge); border-radius: 10px; padding: 18px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
+.ed h3 { margin: 0; font-size: 20px; }
+.ed p { margin: 0; color: var(--ink-2); font-size: 14px; }
+.ed .where { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { display: inline-block; padding: 7px 12px; border-radius: 7px; border: 1px solid var(--ruling); color: var(--ink); text-decoration: none;
+  font-size: 14px; font-weight: 500; }
+.btn:hover { background: var(--sunk); }
+
+footer { border-top: 1px solid var(--edge); }
+footer .in { max-width: 1160px; margin: 0 auto; padding-block: 24px 40px; font: 13px/1.6 var(--mono); color: var(--ink-2);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+@media (max-width: 860px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  nav.index { position: static; }
+  nav.index ol { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  nav.index a::before { display: none; }
+  .editions { grid-template-columns: minmax(0, 1fr); }
+  dl.panels { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  dl.panels dd { margin-bottom: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+<header class="masthead"><div class="in">
+<div class="eyebrow">Blender add-on · Guide</div>
+<h1>Polygraph</h1>
+<p class="lede">The vertex count your engine sees, checked against a budget, with a short list of what to cut first.</p>
+<div class="meta"><span><b>1.0.2</b> current</span><span>Blender <b>4.2</b> and later</span><span>Windows · macOS · Linux</span><span>GPL-3.0-or-later</span></div>
+<svg class="trace" viewBox="0 0 520 40" aria-hidden="true" preserveAspectRatio="none">
+<line x1="0" y1="17" x2="520" y2="17" stroke="var(--near)" stroke-width="1.5" stroke-dasharray="6 5"/>
+<polyline fill="none" stroke="var(--pen)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+ points="0,34 40,31 80,24 105,17"/>
+<polyline fill="none" stroke="var(--over)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+ points="105,17 125,9 165,5 205,8 240,6 275,13 286,17"/>
+<polyline fill="none" stroke="var(--pen)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+ points="286,17 320,23 365,27 420,29 470,30 520,30"/>
+</svg>
+</div></header>
+<div class="wrap">
+<nav class="index" aria-label="Contents"><div class="eyebrow">Contents</div><ol><li><a href="#install">Install</a></li><li><a href="#first-run">First run</a></li><li><a href="#panels">The panels</a></li><li><a href="#engine-counts">Engine counts</a></li><li><a href="#budgets">Budgets</a></li><li><a href="#checks">Mesh checks</a></li><li><a href="#cut">Where to Cut</a></li><li><a href="#players-view">Player's view</a></li><li><a href="#reports">Reports</a></li><li><a href="#preferences">Preferences</a></li><li><a href="#pipeline">Command line</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#editions">Editions</a></li><li><a href="#changes">Changes</a></li><li><a href="#help">Help</a></li></ol></nav>
+<main>
+<section id="install"><h2><span class="no">01</span>Install</h2>
+
+<p>Polygraph runs on Blender 4.2 and later, on Windows, macOS and Linux.</p>
+<ol class="steps">
+<li>Download the Polygraph zip. Keep it zipped.</li>
+<li>In Blender, open <b>Edit &gt; Preferences &gt; Get Extensions</b>.</li>
+<li>Open the menu at the top right of that page, choose <b>Install from Disk</b> and pick the zip.</li>
+<li>In the 3D Viewport, press <kbd>N</kbd> and open the <b>Polygraph</b> tab.</li>
+</ol>
+<p>To update, install the new zip the same way. Your settings and your own profiles stay where they are.</p>
+<p>Free, Pro and Studio share one extension id, so installing one replaces the other. That's on purpose: you never run two copies side by side.</p>
+<div class="aside"><p><b>On a Mac,</b> Safari unzips downloads by itself, which leaves a folder Blender can't install. Download with another browser, or turn off <i>Open safe files after downloading</i> in Safari &gt; Settings &gt; General. If it's already unzipped, compress the folder again in Finder and install that.</p></div>
+
+</section><section id="first-run"><h2><span class="no">02</span>First run</h2>
+
+<p>The top panel of the Polygraph tab shows the scene's triangles, its engine vertices and its objects. The line above the numbers says what is counted, and each part of it is a menu:</p>
+<dl class="panels">
+<dt>Scope</dt><dd>Visible objects, the whole view layer (hidden ones included), the selection, or one collection and its children.</dd>
+<dt>Evaluation</dt><dd>Viewport counts the geometry as the viewport shows it, modifiers and Geometry Nodes included. Base Mesh counts it without modifiers.</dd>
+<dt>Target</dt><dd>glTF, Unity or Unreal Engine. It decides how vertices are counted. glTF is the default, and it is also the right choice for Godot, three.js and other web loaders.</dd>
+</dl>
+<p>Pick a budget from the menu under the numbers, or choose Custom and type your own limits. From then on the panel gives a verdict, worked out from the single worst limit rather than a blended score:</p>
+<div class="verdicts">
+<span class="verdict"><i style="background: var(--pen)"></i>Within budget</span>
+<span class="verdict"><i style="background: var(--near)"></i>Close to the limit</span>
+<span class="verdict"><i style="background: var(--over)"></i>Over budget</span>
+</div>
+<p>Close starts at 85% of a limit, unless the budget says otherwise. Meta Quest budgets, for example, start warning earlier.</p>
+
+</section><section id="panels"><h2><span class="no">03</span>The panels</h2>
+
+<dl class="panels">
+<dt>Polygraph</dt><dd>The verdict, the budget, the scene totals and Where to Cut.</dd>
+<dt>Viewport</dt><dd>Four switches: Stats (the readout in the viewport), Heatmap, In Camera and Pixel Preview, each with its options underneath.</dd>
+<dt>Objects</dt><dd>Every object, mesh, collection or LOD chain, with the columns you choose: triangles, engine vertices, budget used, faults, texel density, screen coverage, triangles per pixel, or the change since a snapshot. Click a column to sort by it.</dd>
+<dt>Materials</dt><dd>Draw calls, material slots, texture memory and the largest textures.</dd>
+<dt>Active Object</dt><dd>The selected object's figures, and how much each cause adds to its engine count.</dd>
+<dt>Checks</dt><dd>The 21 mesh checks, with buttons to mark the faults on the object or select them in Edit Mode.</dd>
+</dl>
+<p>Two preferences put Polygraph elsewhere too: <b>Total in the Viewport Header</b> shows the scene's triangles in the 3D Viewport's header, and <b>Panel in Scene Properties</b> repeats the panels in the Scene tab of the Properties editor.</p>
+
+</section><section id="engine-counts"><h2><span class="no">04</span>Engine counts</h2>
+
+<p>Blender stores one vertex for each corner position. A game engine needs one for every different normal, UV and colour that meets at a corner, so it splits vertices along UV seams, sharp edges and flat-shaded faces. The default cube is 8 vertices in Blender and 24 in any engine.</p>
+<p>Polygraph counts the way each target imports:</p>
+<dl class="panels">
+<dt>glTF</dt><dd>Vertices as Blender's own glTF exporter writes them.</dd>
+<dt>Unity</dt><dd>Vertices of a model imported into Unity. The Tangents option counts the vertices Unity adds for tangents; turn it off if you import with Tangents set to None.</dd>
+<dt>Unreal Engine</dt><dd>Vertices of a static mesh, with Nanite off.</dd>
+</dl>
+<p>When a figure can only be estimated, it carries <code>≈</code> in front. A mesh over 65,535 engine vertices gets a note that it needs 32-bit indices, which some mobile targets don't like.</p>
+<p>The Active Object panel breaks the count down by cause, so you can see which seam or sharp edge is costing what. On a very dense mesh this takes a moment, so press <b>Explain Vertex Count</b> to work it out.</p>
+
+</section><section id="budgets"><h2><span class="no">05</span>Budgets</h2>
+
+<p>A budget is a small JSON file of limits. Some limits apply to the whole scene, some to each object, and some to objects whose names match a pattern, such as <code>*_hair</code>. Polygraph ships 32. 26 cite the page their limits come from, and the note under each one says when a figure is a community rule or a starting point. The other six are starting points to copy and set to your own project's numbers. Free includes the five marked below.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Budget</th><th>Limits</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td><span class="bname">Meta Quest 2 and Pro</span><span class="bnote">Triangles per frame, 750k to 1M. Draw calls for a medium simulation, 200 to 300.</span></td>
+<td class="limits"><span class="lim">Scene</span> 1,000,000 triangles, 300 draw calls</td><td class="src"><a href="https://developers.meta.com/horizon/documentation/unity/unity-perf/">developers.meta.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">Meta Quest 3 and 3S</span><span class="tag free">Free</span><span class="bnote">Triangles per frame, 1.3M to 1.8M. Draw calls for a medium simulation, 400 to 600.</span></td>
+<td class="limits"><span class="lim">Scene</span> 1,800,000 triangles, 600 draw calls</td><td class="src"><a href="https://developers.meta.com/horizon/documentation/unity/unity-perf/">developers.meta.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat Mobile, Excellent</span><span class="bnote">The whole avatar: 7,500 triangles, 1 material slot, 1 skinned mesh, 75 bones, 10 MB of textures.</span></td>
+<td class="limits"><span class="lim">Scene</span> 7,500 triangles, 1 material slot, 1 skinned mesh, 75 bones, 10 MB of textures</td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat Mobile, Good</span><span class="bnote">The whole avatar: 10,000 triangles, 1 material slot, 1 skinned mesh, 90 bones, 18 MB of textures.</span></td>
+<td class="limits"><span class="lim">Scene</span> 10,000 triangles, 1 material slot, 1 skinned mesh, 90 bones, 18 MB of textures</td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat Mobile, Medium</span><span class="bnote">The whole avatar: 15,000 triangles, 2 material slots, 2 skinned meshes, 150 bones, 25 MB of textures.</span></td>
+<td class="limits"><span class="lim">Scene</span> 15,000 triangles, 2 material slots, 2 skinned meshes, 150 bones, 25 MB of textures</td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat Mobile, Poor</span><span class="bnote">The whole avatar: 20,000 triangles, 4 material slots, 2 skinned meshes, 150 bones, 40 MB of textures.</span></td>
+<td class="limits"><span class="lim">Scene</span> 20,000 triangles, 4 material slots, 2 skinned meshes, 150 bones, 40 MB of textures</td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat PC, Excellent</span><span class="bnote">The whole avatar: 32,000 triangles, 4 material slots, 1 skinned mesh, 75 bones, 40 MB of textures.</span></td>
+<td class="limits"><span class="lim">Scene</span> 32,000 triangles, 4 material slots, 1 skinned mesh, 75 bones, 40 MB of textures</td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat PC, Good</span><span class="bnote">The whole avatar: 70,000 triangles, 8 material slots, 2 skinned meshes, 150 bones, 75 MB of textures.</span></td>
+<td class="limits"><span class="lim">Scene</span> 70,000 triangles, 8 material slots, 2 skinned meshes, 150 bones, 75 MB of textures</td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat PC, Medium</span><span class="bnote">The whole avatar: 70,000 triangles, 16 material slots, 8 skinned meshes, 256 bones, 110 MB of textures.</span></td>
+<td class="limits"><span class="lim">Scene</span> 70,000 triangles, 16 material slots, 8 skinned meshes, 256 bones, 110 MB of textures</td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat PC, Poor</span><span class="bnote">The whole avatar: 70,000 triangles, 32 material slots, 16 skinned meshes, 400 bones, 150 MB of textures.</span></td>
+<td class="limits"><span class="lim">Scene</span> 70,000 triangles, 32 material slots, 16 skinned meshes, 400 bones, 150 MB of textures</td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">Roblox mesh</span><span class="tag free">Free</span><span class="bnote">20,000 triangles per mesh.</span></td>
+<td class="limits"><span class="lim">Each object</span> 20,000 triangles</td><td class="src"><a href="https://create.roblox.com/docs/art/modeling/specifications">create.roblox.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">Roblox rigid accessory</span><span class="bnote">4,000 triangles for one accessory, which must be a single closed mesh. Textures up to 1024 × 1024, and 256 × 256 is often enough.</span></td>
+<td class="limits"><span class="lim">Each object</span> 4,000 triangles</td><td class="src"><a href="https://create.roblox.com/docs/avatar/rigid-accessories/specifications">create.roblox.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Fortnite UEFN, large prop</span><span class="bnote">Epic&#x27;s LOD0 target for a large object is 2,500. Its validator warns past 30,000 vertices in a mesh.</span></td>
+<td class="limits"><span class="lim">Each object</span> 2,500 triangles, 30,000 vertices</td><td class="src"><a href="https://dev.epicgames.com/documentation/fortnite/fortniteready-assets-best-practices-in-fortnite">dev.epicgames.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Fortnite UEFN, medium prop</span><span class="bnote">Epic&#x27;s LOD0 target for a medium object is 900. Its validator warns past 30,000 vertices in a mesh.</span></td>
+<td class="limits"><span class="lim">Each object</span> 900 triangles, 30,000 vertices</td><td class="src"><a href="https://dev.epicgames.com/documentation/fortnite/fortniteready-assets-best-practices-in-fortnite">dev.epicgames.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Fortnite UEFN, small prop</span><span class="bnote">Epic&#x27;s LOD0 target for a small, simple object is 400. Its validator warns past 30,000 vertices in a mesh.</span></td>
+<td class="limits"><span class="lim">Each object</span> 400 triangles, 30,000 vertices</td><td class="src"><a href="https://dev.epicgames.com/documentation/fortnite/fortniteready-assets-best-practices-in-fortnite">dev.epicgames.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">visionOS, Full Space</span><span class="bnote">Under 500,000 triangles and 500 draw calls.</span></td>
+<td class="limits"><span class="lim">Scene</span> 500,000 triangles, 500 draw calls</td><td class="src"><a href="https://developer.apple.com/documentation/visionos/reducing-the-rendering-cost-of-realitykit-content-on-visionos">developer.apple.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">visionOS, Shared Space</span><span class="bnote">Under 250,000 triangles and 250 draw calls.</span></td>
+<td class="limits"><span class="lim">Scene</span> 250,000 triangles, 250 draw calls</td><td class="src"><a href="https://developer.apple.com/documentation/visionos/reducing-the-rendering-cost-of-realitykit-content-on-visionos">developer.apple.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">Apple AR Quick Look</span><span class="bnote">Apple&#x27;s long-standing advice for USDZ: under 100,000 triangles, textures up to 2048 × 2048, and 1024 × 1024 where it is enough. What runs out first is memory, not file size.</span></td>
+<td class="limits"><span class="lim">Scene</span> 100,000 triangles</td><td class="src"><a href="https://developer.apple.com/forums/thread/693867">developer.apple.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">3D Commerce, desktop web</span><span class="bnote">250,000 triangles and under 100 draw calls for a product.</span></td>
+<td class="limits"><span class="lim">Scene</span> 250,000 triangles, 100 draw calls</td><td class="src"><a href="https://github.com/mlimper/3DC-Asset-Creation/blob/main/asset-creation-guidelines/full-version/sec99_PublishingTargets/PublishingTargets.md">github.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">3D Commerce, mobile AR</span><span class="bnote">150,000 triangles and under 20 draw calls for a product.</span></td>
+<td class="limits"><span class="lim">Scene</span> 150,000 triangles, 20 draw calls</td><td class="src"><a href="https://github.com/mlimper/3DC-Asset-Creation/blob/main/asset-creation-guidelines/full-version/sec99_PublishingTargets/PublishingTargets.md">github.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">Second Life mesh</span><span class="bnote">Up to 65,536 vertices in a model and up to 8 faces, one per material. Land impact grows with every level of detail, so keep the lower ones light.</span></td>
+<td class="limits"><span class="lim">Each object</span> 65,536 vertices</td><td class="src"><a href="https://wiki.secondlife.com/wiki/Mesh/Technical_Overview">wiki.secondlife.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">The Sims 4, Create a Sim</span><span class="bnote">EA&#x27;s LOD0 targets by kind, read from object names: hair 4,000, full body 5,800, top 3,300, bottom 1,200, shoes 800, hat, earrings and necklace 1,200, nails 500. Up to 10% over can pass. Diffuse and specular maps are 1024 × 2048.</span></td>
+<td class="limits"><span class="lim">Each object</span> 5,800 triangles<br><span class="lim">By name</span> limits per kind of object</td><td class="src"><a href="https://media.contentapi.ea.com/content/dam/eacom/SIMS/common/create-a-sim-technical-test-criteria.pdf">media.contentapi.ea.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Minecraft Bedrock, block or entity</span><span class="bnote">Mojang publishes no triangle limit. Block geometry must fit within 30 × 30 × 30 pixels of the origin, and textures smaller than 16 × 16 are stretched. The triangle and texture figures here are starting points that keep a model light on phones.</span></td>
+<td class="limits"><span class="lim">Each object</span> 2,000 triangles</td><td class="src"><a href="https://www.minecraft.net/en-us/creator/article/custom-block-geometry-release">minecraft.net</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">GTA V and FiveM, vehicle</span><span class="bnote">Community limits, not Rockstar&#x27;s: texture dictionaries over 16 MB fail to stream, and the closest level of detail is kept under 200,000 triangles.</span></td>
+<td class="limits"><span class="lim">Scene</span> 200,000 triangles, 16 MB of textures</td><td class="src"><a href="https://forum.cfx.re/t/how-to-split-vehicle-ytd-files-to-avoid-16mb-stream-limit/142734">forum.cfx.re</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Android, 16-bit meshes</span><span class="bnote">Keep every mesh under 65,535 vertices so it can use 16-bit indices.</span></td>
+<td class="limits"><span class="lim">Each object</span> 65,535 vertices</td><td class="src"><a href="https://developer.android.com/games/optimize/geometry">developer.android.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">3D printing service</span><span class="bnote">Print services take up to about 1,000,000 polygons in one file. The model must be closed: the Non-manifold Edges and Open Edges checks show where it is not.</span></td>
+<td class="limits"><span class="lim">Scene</span> 1,000,000 triangles</td><td class="src"><a href="https://support.shapeways.com/hc/en-nl/articles/17000648918300-How-to-upload-your-3D-model">support.shapeways.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">AA game</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><span class="lim">Scene</span> 3,000,000 triangles<br><span class="lim">Each object</span> 40,000 triangles</td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Hero asset</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><span class="lim">Each object</span> 100,000 triangles</td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Indie game</span><span class="tag free">Free</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><span class="lim">Scene</span> 1,000,000 triangles<br><span class="lim">Each object</span> 15,000 triangles</td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Mobile game</span><span class="tag free">Free</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><span class="lim">Scene</span> 200,000 triangles<br><span class="lim">Each object</span> 5,000 triangles</td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Real-time archviz walkthrough</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><span class="lim">Scene</span> 10,000,000 triangles, 5,000 draw calls, 4,096 MB of textures</td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Web viewer (three.js, model-viewer)</span><span class="tag free">Free</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><span class="lim">Scene</span> 300,000 triangles, 100 draw calls, 64 MB of textures</td><td class="src"><span class="muted">Starting point</span></td></tr>
+</tbody></table></div>
+<h3>Your own budgets</h3>
+<p>Type limits into the Custom budget, or keep the current ones with <b>Save as Profile</b>. Your profiles live in Blender's folder for extension data; <b>Open Your Profiles Folder</b> in the preferences, under Budget Profiles, takes you there. A file you add, change or delete shows up in the menu within a second, with no restart. Where one of yours has the same name as a shipped one, yours wins.</p>
+<p>A profile looks like this. Every field is optional apart from at least one limit.</p>
+<pre><code>{
+  "name": "Our mobile game",
+  "note": "Agreed with the lead on 3 March.",
+  "near": 0.85,
+  "scene":  { "triangles": 250000, "draw_calls": 120, "texture_memory_mb": 256 },
+  "object": { "triangles": 8000 },
+  "classes": [ { "match": "hero_*", "triangles": 30000, "distance": 3 } ],
+  "textures": { "largest": 2048, "power_of_two": true }
+}</code></pre>
+<p class="muted">Limits can be set on <code>triangles</code>, <code>vertices</code>, <code>objects</code>, <code>draw_calls</code>, <code>material_slots</code>, <code>materials</code>, <code>texture_memory_mb</code>, <code>bones</code> and <code>skinned_meshes</code>. <code>distance</code> is the metres an object is usually seen from, and <code>display</code> takes a screen's <code>height</code> and <code>fov</code>, or a headset's <code>pixels_per_degree</code>.</p>
+<h3>Bringing budgets in <span class="tag pro">Pro</span></h3>
+<p><b>Import Budget from CSV</b> and <b>Export Budget as CSV</b> move limits to and from a spreadsheet. <b>Import Khronos Audit Profile</b> reads a profile written for the Khronos glTF Asset Auditor.</p>
+<h3>Budgets for a whole team <span class="tag studio">Studio</span></h3>
+<p>Put profiles in a folder named <code>polygraph_profiles</code> next to the project's .blend files, or in any folder above them. Everyone who opens a file under it gets the same budgets, and so does the command line check.</p>
+
+</section><section id="checks"><h2><span class="no">06</span>Mesh checks</h2>
+
+<p>21 checks run on every object in scope. Faults are things an engine or a printer will object to. Notes describe the mesh and are often fine, depending on what it is for. <b>Mark on Object</b> draws what a check found in the viewport, and <b>Select in Edit Mode</b> selects it. <b>Check Thresholds</b> sets the merge distance, the smallest face area, the needle angle and the sharp angle.</p>
+<div class="tablewrap"><table class="compact">
+<thead><tr><th>Check</th><th></th><th>Looks at</th><th>What it finds</th></tr></thead>
+<tbody>
+<tr><td class="cname">N-gons</td><td><span class="tag fault">Fault</span></td><td class="muted">Faces</td><td>Faces with more than four corners.</td></tr>
+<tr><td class="cname">Doubles</td><td><span class="tag fault">Fault</span></td><td class="muted">Vertices</td><td>Vertices that sit closer to another vertex than the merge distance.</td></tr>
+<tr><td class="cname">Loose Vertices</td><td><span class="tag fault">Fault</span></td><td class="muted">Vertices</td><td>Vertices that belong to no edge.</td></tr>
+<tr><td class="cname">Loose Edges</td><td><span class="tag fault">Fault</span></td><td class="muted">Edges</td><td>Edges that belong to no face.</td></tr>
+<tr><td class="cname">Non-manifold Edges</td><td><span class="tag fault">Fault</span></td><td class="muted">Edges</td><td>Edges shared by more than two faces.</td></tr>
+<tr><td class="cname">Faces without Area</td><td><span class="tag fault">Fault</span></td><td class="muted">Faces</td><td>Faces folded onto a line or a point.</td></tr>
+<tr><td class="cname">Tiny Faces</td><td><span class="tag fault">Fault</span></td><td class="muted">Faces</td><td>Faces smaller than the smallest area allowed.</td></tr>
+<tr><td class="cname">Needle Triangles</td><td><span class="tag fault">Fault</span></td><td class="muted">Faces</td><td>Faces that hold a triangle thinner than the needle angle, once they are split into triangles.</td></tr>
+<tr><td class="cname">Smooth over Sharp</td><td><span class="tag fault">Fault</span></td><td class="muted">Edges</td><td>Smooth-shaded edges whose faces meet at more than the sharp angle. They shade as a dark smear.</td></tr>
+<tr><td class="cname">No UV Map</td><td><span class="tag fault">Fault</span></td><td class="muted">Object</td><td>The mesh has faces and no UV map to texture them with.</td></tr>
+<tr><td class="cname">Negative Scale</td><td><span class="tag fault">Fault</span></td><td class="muted">Object</td><td>The object is mirrored by a negative scale. Engines turn such a mesh inside out unless the scale is applied first.</td></tr>
+<tr><td class="cname">Unapplied Scale</td><td><span class="tag note">Note</span></td><td class="muted">Object</td><td>The object&#x27;s scale is not 1. Fine for a placed copy, a fault in a mesh that is exported by itself.</td></tr>
+<tr><td class="cname">UVs outside 0 to 1</td><td><span class="tag note">Note</span></td><td class="muted">Faces</td><td>Faces whose UVs leave the unit square. Fine for tiling textures, a fault in a lightmap or an atlas.</td></tr>
+<tr><td class="cname">Triangles</td><td><span class="tag note">Note</span></td><td class="muted">Faces</td><td>Faces with three corners.</td></tr>
+<tr><td class="cname">Open Edges</td><td><span class="tag note">Note</span></td><td class="muted">Edges</td><td>Edges on a border, with a face on one side only.</td></tr>
+<tr><td class="cname">3-edge Poles</td><td><span class="tag note">Note</span></td><td class="muted">Vertices</td><td>Vertices inside the surface where three edges meet.</td></tr>
+<tr><td class="cname">5-edge Poles</td><td><span class="tag note">Note</span></td><td class="muted">Vertices</td><td>Vertices inside the surface where five edges meet.</td></tr>
+<tr><td class="cname">6+ edge Poles</td><td><span class="tag note">Note</span></td><td class="muted">Vertices</td><td>Vertices inside the surface where six or more edges meet.</td></tr>
+<tr><td class="cname">Flat Vertices</td><td><span class="tag note">Note</span></td><td class="muted">Vertices</td><td>Vertices inside a flat area. They add triangles and no shape.</td></tr>
+<tr><td class="cname">Fragments</td><td><span class="tag note">Note</span></td><td class="muted">Faces</td><td>Separate pieces with a tiny part of the object&#x27;s surface. Scans and conversions leave them behind.</td></tr>
+<tr><td class="cname">Diagonal Slivers</td><td><span class="tag note">Note</span></td><td class="muted">Faces</td><td>Large triangles that lie diagonally across the box around them. Ray tracing finds them slowly.</td></tr>
+</tbody></table></div>
+
+</section><section id="cut"><h2><span class="no">07</span>Where to Cut and What If</h2>
+
+<p><b>Where to Cut</b>, at the bottom of the top panel, lists the changes that would save the most, largest first. Each one names its cause, the share it would save and what to do about it, and the arrow beside it selects the objects it's about. Free shows the top three; Pro shows them all.</p>
+<p><b>What If</b> <span class="tag pro">Pro</span> lets you assume something about the selected objects before you touch them: that they're gone, that they switch to their next LOD, or that their triangles are capped. Every figure and the verdict then read as if you had. <b>Take Back Every Assumption</b> clears them. Nothing in the file changes until you make the edit yourself.</p>
+<p><b>Edit receipts</b> <span class="tag pro">Pro</span> price each edit of the active object: the triangles and vertices it added or saved.</p>
+
+</section><section id="players-view"><h2><span class="no">08</span>Player's view<span class="tag pro">Pro</span></h2>
+
+<p>Budgets for headsets and phones are stated per frame, so what matters is what the player can see.</p>
+<dl class="panels">
+<dt>In Camera</dt><dd>Judges only what the active camera can see, once what stands in front of it is taken away. The Objects list gains screen coverage and triangles per pixel.</dd>
+<dt>Pixel Preview</dt><dd>Shows a model at the size the player will see it, in pixels, for a flat screen (its height and field of view) or a headset (pixels per degree).</dd>
+<dt>Heatmap</dt><dd>Colours every object by triangles. Pro adds share of the scene, budget, triangle density, pixels per triangle, overdraw, and triangles per camera pixel, where objects the camera never sees are hottest.</dd>
+<dt>Measured</dt><dd>LOD switch distances, overdraw, an estimate of ray tracing cost and the cost of shadows, each measured from the scene rather than guessed.</dd>
+</dl>
+</section><section id="reports"><h2><span class="no">09</span>Reports and snapshots</h2>
+
+<p><b>Export Report</b> writes an HTML report you can send to anyone: the verdict, every limit, the heaviest objects, the textures and Where to Cut. <span class="tag pro">Pro</span> adds JSON, CSV and Markdown, and <span class="tag studio">Studio</span> puts your studio's name and logo on it.</p>
+<p><b>Take Snapshot</b> <span class="tag pro">Pro</span> keeps the current figures, and <b>Compare With Snapshot</b> shows what changed since, line by line. <b>Copy Summary</b> <span class="tag pro">Pro</span> puts a short text summary on the clipboard for a chat or a ticket.</p>
+
+</section><section id="preferences"><h2><span class="no">10</span>Preferences</h2>
+
+<p>Edit &gt; Preferences &gt; Add-ons &gt; Polygraph. The ones people change most:</p>
+<dl class="panels">
+<dt>Show</dt><dd>How much Polygraph shows, and in which words.</dd>
+<dt>Numbers</dt><dd>How large numbers are written.</dd>
+<dt>Tab Name</dt><dd>The Sidebar tab Polygraph lives in. Give it another tool's tab name to share a tab.</dd>
+<dt>Stats</dt><dd>The readout in the viewport, with its position, backdrop and size.</dd>
+<dt>Palette</dt><dd>The colours Polygraph draws with: purple paper with a green pen, or Orchid, which follows your theme.</dd>
+<dt>Color Vision</dt><dd>Standard, or Safe, which moves the close and over colours apart for colour-blind eyes.</dd>
+<dt>Heatmap Opacity</dt><dd>How strongly the heatmap covers the viewport's own shading.</dd>
+</dl>
+
+</section><section id="pipeline"><h2><span class="no">11</span>Command line and Python<span class="tag studio">Studio</span></h2>
+
+<p>Polygraph measures a .blend file the same way from the panel, from a build script and from Python, and all three write the same report. Nothing is sent anywhere, and nothing in the file is changed.</p>
+<pre><code>blender -b level.blend --command polygraph check --profile meta_quest_3 --target UNITY --junit results.xml
+blender --command polygraph profiles</code></pre>
+<div class="tablewrap"><table class="compact">
+<thead><tr><th>Exit code</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>0</code></td><td>Within budget, or no budget set</td></tr>
+<tr><td><code>1</code></td><td>Over budget. With <code>--strict</code>, close to a limit counts too</td></tr>
+<tr><td><code>2</code></td><td>Something went wrong: an unknown profile, scene or target, or a file that couldn't be written</td></tr>
+</tbody></table></div>
+<div class="tablewrap"><table class="compact">
+<thead><tr><th>Option</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>--profile ID</code></td><td>Judge against this budget. It can also be the path of a profile's JSON file, or of a Khronos glTF Asset Auditor profile. <code>NONE</code> judges nothing. Without it, the scene's own budget is used</td></tr>
+<tr><td><code>--target UNREAL|UNITY|GLTF</code></td><td>Count vertices as this engine does. Without it, the scene's own target</td></tr>
+<tr><td><code>--scene NAME</code>, <code>--view-layer NAME</code></td><td>Measure another scene or view layer</td></tr>
+<tr><td><code>--strict</code></td><td>Fail when a limit is close as well as when it's passed</td></tr>
+<tr><td><code>--no-checks</code>, <code>--no-materials</code></td><td>Leave out the mesh checks, or draw calls and textures, to save time</td></tr>
+<tr><td><code>--json</code>, <code>--csv</code>, <code>--html</code>, <code>--markdown PATH</code></td><td>Write that kind of report</td></tr>
+<tr><td><code>--junit PATH</code></td><td>Write JUnit results: one test for each scene limit and each object with a limit</td></tr>
+</tbody></table></div>
+<p>Polygraph has to be installed and enabled in the Blender that runs the command. A build machine can give Blender a folder of its own with <code>BLENDER_USER_RESOURCES</code>, install Polygraph there once, and leave everyone else's setup alone.</p>
+<h3>Python</h3>
+<pre><code>import bl_ext.user_default.polygraph.api as polygraph
+
+result = polygraph.evaluate()
+if result["budget"]["state"] == "OVER":
+    for entry in result["objects"]:
+        if entry["verdict"] and entry["verdict"]["state"] == "OVER":
+            print(entry["name"], entry["triangles"])</code></pre>
+<p><code>evaluate()</code> returns the report as a dictionary, <code>profiles()</code> lists every budget, and <code>write_report(path)</code> writes a report whose kind follows the file extension: <code>.html</code>, <code>.json</code>, <code>.csv</code>, <code>.md</code>, or <code>.xml</code> for JUnit. The module path depends on the repository Polygraph was installed from; <code>user_default</code> is the one Blender uses for extensions installed from disk.</p>
+<p class="muted">The report's schema is <code>polygraph-report/1</code>. Fields are only ever added to a version, never renamed, removed or given another meaning.</p>
+
+</section><section id="privacy"><h2><span class="no">12</span>Privacy</h2>
+
+<p>Polygraph works offline. Nothing about your files ever leaves your computer.</p>
+<p>The Gumroad and Superhive builds can check for a newer version. The check is off until you switch on <b>Check for Updates</b> in the preferences, and it also waits for Blender's own Allow Online Access. Once a day it reads one small file on this site that names the latest version. The request carries nothing about you or your files, only the name Polygraph. The extensions.blender.org build has no update check at all, because Blender updates it for you.</p>
+
+</section><section id="editions"><h2><span class="no">13</span>Editions</h2>
+
+<p>Every edition is GPL, so every one of them can be used for paid work. A cheaper edition carries no locked code from a dearer one: what it doesn't have isn't in the zip.</p>
+<div class="editions">
+<div class="ed"><h3>Free</h3><p>Whether the scene fits, and what's wrong with it. Engine counts, five budgets, the 21 checks, the top three cuts and the HTML report.</p>
+<div class="where"><a class="btn" href="https://waddlebyduck.gumroad.com/l/polygraph-free">Gumroad</a></div></div>
+<div class="ed"><h3>Pro</h3><p>For one person. All 32 budgets, What If, the player's view, edit receipts, snapshots and every report format.</p>
+<div class="where"><a class="btn" href="https://waddlebyduck.gumroad.com/l/polygraph">Gumroad</a><a class="btn" href="https://superhivemarket.com/products/polygraph">Superhive</a></div></div>
+<div class="ed"><h3>Studio</h3><p>For a team of five. The command line check, the Python API, team budget folders, your name on reports, invoices and answers within two working days.</p>
+<div class="where"><a class="btn" href="https://waddlebyduck.gumroad.com/l/polygraph">Gumroad</a><a class="btn" href="https://superhivemarket.com/products/polygraph">Superhive</a></div></div>
+</div>
+<div class="tablewrap"><table class="compact">
+<thead><tr><th>Feature</th><th>Free</th><th>Pro</th><th>Studio</th></tr></thead>
+<tbody>
+<tr><td>Engine counts for glTF, Unity and Unreal</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr><tr><td>Budgets</td><td class="yes">5</td><td class="yes">32</td><td class="yes">32</td></tr><tr><td>Mesh checks</td><td class="yes">21</td><td class="yes">21</td><td class="yes">21</td></tr><tr><td>Where to Cut</td><td class="yes">Top 3</td><td class="yes">All</td><td class="yes">All</td></tr><tr><td>Heatmap</td><td class="yes">Triangles</td><td class="yes">Every mode</td><td class="yes">Every mode</td></tr><tr><td>What If, edit receipts, snapshots and Compare</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr><tr><td>In Camera, Pixel Preview, LOD distances, overdraw, ray tracing, shadows</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr><tr><td>Reports</td><td class="yes">HTML</td><td class="yes">HTML, JSON, CSV, Markdown</td><td class="yes">All, with your name and logo</td></tr><tr><td>Command line check, JUnit and Python API</td><td class="no">No</td><td class="no">No</td><td class="yes">Yes</td></tr><tr><td>Team budget folders</td><td class="no">No</td><td class="no">No</td><td class="yes">Yes</td></tr><tr><td>Seats</td><td class="yes">Anyone</td><td class="yes">1</td><td class="yes">5, then $49 each</td></tr><tr><td>Support</td><td class="yes">Issues page</td><td class="yes">Email</td><td class="yes">Within two working days</td></tr>
+</tbody></table></div>
+
+</section><section id="changes"><h2><span class="no">14</span>Changes</h2>
+
+<h3 style="margin-top: 6px">1.0.2 <span class="muted" style="font-weight: 400">· December 8, 2026</span></h3>
+<p>First release.</p>
+<ul>
+<li>Engine vertex counts for Unity, Unreal (Nanite off) and glTF, live in the Sidebar and the viewport</li>
+<li>A verdict against 32 budgets (5 in Free), or limits you type in</li>
+<li>Draw calls, texture memory and texture problems for every material</li>
+<li>21 mesh checks, marked on the object and selectable in Edit Mode</li>
+<li>Where to Cut, What If, edit receipts, snapshots and Compare</li>
+<li>In Camera, Pixel Preview, LOD switch distances, overdraw, ray tracing and shadow cost</li>
+<li>Command line check with JUnit results, a Python API, team budget folders and studio branding on reports</li>
+<li>An update check that stays off until you switch it on</li>
+</ul>
+
+</section><section id="help"><h2><span class="no">15</span>Help</h2>
+
+<p>Found a bug or a wrong figure? Open an issue on the <a href="https://github.com/atahangatz/polygraph/issues">Issues page</a> with your Blender version, your system and a screenshot of the Polygraph tab. Studio customers can also write in and hear back within two working days.</p>
+
+</section>
+</main>
+</div>
+<footer><div class="in">Polygraph is made by Waddle by Duck Initiative. Blender is a trademark of the Blender Foundation; Polygraph is not made by or affiliated with it.</div></footer>
+</html>
