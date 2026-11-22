@@ -2,18 +2,18 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Polygraph Press Kit</title>
-<meta name="description" content="Facts, screenshots, clips and logos for writing about Polygraph, the Blender add-on that shows the vertex count your engine sees.">
-<link rel="icon" href="../favicon.ico" sizes="32x32">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="manifest" href="../site.webmanifest">
+<title>Polygraph Guide</title>
+<meta name="description" content="How to install and use Polygraph, the Blender add-on that shows the vertex count your engine sees and checks it against a budget.">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#241A40">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Polygraph">
-<meta property="og:title" content="Polygraph Press Kit">
-<meta property="og:description" content="Facts, screenshots, clips and logos for writing about Polygraph.">
-<meta property="og:url" content="https://duckinitiative.com/polygraph/press/">
+<meta property="og:title" content="Polygraph Guide">
+<meta property="og:description" content="The vertex count your engine sees, checked against a budget, with a short list of what to cut first.">
+<meta property="og:url" content="https://duckinitiative.com/polygraph/">
 <meta property="og:image" content="https://duckinitiative.com/polygraph/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -169,143 +169,328 @@ footer .links a:hover { text-decoration: underline; }
 }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
-.kit { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 24px; }
-.btn.main { background: var(--ink); color: var(--surface); border-color: var(--ink); padding: 10px 16px; }
-.btn.main:hover { background: var(--ink-2); border-color: var(--ink-2); }
-.kit .note { font: 13px/1.4 var(--mono); color: var(--ink-2); }
-blockquote.copy { margin: 14px 0; padding: 14px 18px; border-left: 3px solid var(--pen); background: var(--surface);
-  border-radius: 0 8px 8px 0; max-width: 68ch; font-size: 17px; }
-blockquote.copy p { margin: 0; }
-.copy-label { font: 500 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ruling); margin: 22px 0 0; }
-table.facts { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--edge); border-radius: 10px; overflow: hidden; }
-table.facts th { text-align: left; font: 500 12px/1.6 var(--mono); letter-spacing: 0.04em; color: var(--ink-2); text-transform: none;
-  padding: 11px 14px; border-bottom: 1px solid var(--edge); width: 9.5em; vertical-align: top; white-space: normal; }
-table.facts td { padding: 11px 14px; border-bottom: 1px solid var(--edge); }
-table.facts tr:last-child th, table.facts tr:last-child td { border-bottom: 0; }
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 18px 0; }
-.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-figure { margin: 0; }
-figure.clip video { border-radius: 8px; border: 1px solid var(--edge); }
-figure.shot img, figure.clip img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--edge); background: var(--sunk); }
-figcaption { font-size: 14px; color: var(--ink-2); margin-top: 8px; line-height: 1.5; }
-figcaption .get { display: block; font: 12px/1.6 var(--mono); margin-top: 2px; }
-video { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--edge); background: #000; }
-.logo-tile .plate { height: 150px; border-radius: 10px; border: 1px solid var(--edge); display: grid; place-items: center; padding: 22px; }
-.logo-tile.dark .plate { background: #241A40; border-color: #241A40; }
-.logo-tile.light .plate { background: #FFFFFF; }
-.logo-tile.photo .plate { background: #51476F; border-color: #51476F; }
-.logo-tile .plate img { max-width: 100%; max-height: 74px; width: auto; height: auto; }
-.logo-tile figcaption b { display: block; color: var(--ink); font-weight: 600; }
-.logo-tile figcaption span { font: 12px/1.6 var(--mono); }
-.studio { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 18px; align-items: start; }
-.studio img { width: 112px; height: 112px; border-radius: 10px; display: block; }
-.credit { font: 12px/1.6 var(--mono); color: var(--ink-2); }
-@media (max-width: 860px) { .grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) {
-  .grid, .grid.three { grid-template-columns: minmax(0, 1fr); }
-  table.facts th, table.facts td { display: block; width: auto; }
-  table.facts th { border-bottom: 0; padding-bottom: 0; }
-  .studio { grid-template-columns: minmax(0, 1fr); }
-}
+.film { margin: 0 0 34px; }
+.film video { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--edge); background: #120A2E; }
+.film figcaption { font: 13px/1.6 var(--mono); color: var(--ink-2); margin-top: 8px; }
+.loops { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 22px 0 6px; }
+.loops.one { grid-template-columns: minmax(0, 1fr); }
+.loops figure { margin: 0; }
+.loops video { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--edge); background: #120A2E; }
+.loops figcaption { font-size: 14px; color: var(--ink-2); margin-top: 6px; line-height: 1.45; }
+@media (max-width: 720px) { .loops { grid-template-columns: minmax(0, 1fr); } }
 </style>
 <header class="masthead"><div class="in">
-<a class="home" href="../" aria-label="Polygraph Guide"><svg class="logo" role="img" aria-label="Polygraph" xmlns="http://www.w3.org/2000/svg" viewBox="-4.81 -78.8 598.825 104.8"><title>Polygraph</title><path style="fill: var(--pen)" d="M0.114 -48.241Q2.495 -58.955 5.405 -63.843Q10.004 -71.569 18.172 -71.569Q23.047 -71.569 27.697 -65.984Q29.854 -63.393 34.025 -56.694Q42.43 -43.194 45.895 -43.194Q49.82 -43.194 58.134 -46.828Q69.969 -52 77.858 -52H122.215Q124.204 -52 125.609 -50.594Q127.015 -49.188 127.015 -47.2Q127.015 -45.212 125.609 -43.806Q124.204 -42.4 122.215 -42.4H77.858Q71.975 -42.4 61.978 -38.031Q51.826 -33.594 45.895 -33.594Q39.649 -33.594 33.787 -40.266Q30.896 -43.555 25.875 -51.62Q19.432 -61.969 18.172 -61.969Q15.461 -61.969 13.654 -58.933Q11.532 -55.368 9.486 -46.159Q9.054 -44.218 7.377 -43.15Q5.7 -42.083 3.759 -42.514Q1.818 -42.946 0.75 -44.623Q-0.317 -46.3 0.114 -48.241Z"/><path style="fill: var(--ink)" d="M0.114 -5.841Q2.495 -16.555 5.405 -21.443Q10.004 -29.169 18.172 -29.169Q23.047 -29.169 27.697 -23.584Q29.854 -20.993 34.025 -14.294Q42.43 -0.794 45.895 -0.794Q49.82 -0.794 58.134 -4.428Q69.969 -9.6 77.858 -9.6H122.215Q124.204 -9.6 125.609 -8.194Q127.015 -6.788 127.015 -4.8Q127.015 -2.812 125.609 -1.406Q124.204 0 122.215 0H77.858Q71.975 0 61.978 4.369Q51.826 8.806 45.895 8.806Q39.649 8.806 33.787 2.134Q30.896 -1.156 25.875 -9.22Q19.432 -19.569 18.172 -19.569Q15.461 -19.569 13.654 -16.533Q11.532 -12.968 9.486 -3.759Q9.054 -1.818 7.377 -0.75Q5.7 0.317 3.759 -0.114Q1.818 -0.546 0.75 -2.223Q-0.317 -3.9 0.114 -5.841Z"/><path style="fill: var(--ink)" d="M157.02 20V-52H167.92V-43.4H168.42Q170.02 -48.1 173.92 -50.65Q177.82 -53.2 183.02 -53.2Q189.62 -53.2 194.22 -49.95Q198.82 -46.7 201.27 -40.65Q203.72 -34.6 203.72 -26Q203.72 -17.5 201.27 -11.4Q198.82 -5.3 194.22 -2.05Q189.62 1.2 183.02 1.2Q177.82 1.2 174.02 -1.4Q170.22 -4 168.42 -8.6H167.92V20ZM179.72 -8Q185.42 -8 188.82 -11.75Q192.22 -15.5 192.22 -21.5V-30.5Q192.22 -36.5 188.82 -40.2Q185.42 -43.9 179.72 -43.9Q176.42 -43.9 173.77 -42.8Q171.12 -41.7 169.52 -39.7Q167.92 -37.7 167.92 -35V-17.4Q167.92 -14.4 169.52 -12.35Q171.12 -10.3 173.77 -9.15Q176.42 -8 179.72 -8Z M235.52 1.2Q228.22 1.2 222.87 -2.15Q217.52 -5.5 214.57 -11.6Q211.62 -17.7 211.62 -26Q211.62 -34.3 214.57 -40.4Q217.52 -46.5 222.87 -49.85Q228.22 -53.2 235.52 -53.2Q242.72 -53.2 248.07 -49.85Q253.42 -46.5 256.37 -40.4Q259.32 -34.3 259.32 -26Q259.32 -17.7 256.37 -11.6Q253.42 -5.5 248.07 -2.15Q242.72 1.2 235.52 1.2ZM235.52 -7.9Q241.12 -7.9 244.47 -11.35Q247.82 -14.8 247.82 -21.6V-30.4Q247.82 -37.2 244.47 -40.65Q241.12 -44.1 235.52 -44.1Q230.02 -44.1 226.57 -40.65Q223.12 -37.2 223.12 -30.4V-21.6Q223.12 -14.8 226.57 -11.35Q230.02 -7.9 235.52 -7.9Z M288.52 0H281.62Q276.02 0 273.22 -2.95Q270.42 -5.9 270.42 -10.9V-74H281.32V-8.9H288.52Z M318.62 -21.4 329.02 -52H339.52L317.62 10.3Q316.42 13.8 314.77 15.95Q313.12 18.1 310.57 19.05Q308.02 20 303.92 20H297.62V11.1H306.42L309.42 2.3L290.52 -52H301.42L311.82 -21.4L314.82 -10.1H315.32Z M390.62 4.9Q390.62 10.3 387.87 13.95Q385.12 17.6 379.32 19.4Q373.52 21.2 364.12 21.2Q355.72 21.2 350.47 19.7Q345.22 18.2 342.87 15.4Q340.52 12.6 340.52 8.7Q340.52 4.4 342.87 1.95Q345.22 -0.5 349.42 -1.3V-2.4Q346.52 -3.3 345.02 -5.4Q343.52 -7.5 343.52 -10.4Q343.52 -14.4 346.27 -16.55Q349.02 -18.7 352.82 -19.6V-20Q348.12 -22.2 345.67 -26.2Q343.22 -30.2 343.22 -35.4Q343.22 -40.7 345.67 -44.7Q348.12 -48.7 352.77 -50.95Q357.42 -53.2 363.92 -53.2Q366.62 -53.2 368.97 -52.8Q371.32 -52.4 373.42 -51.6V-53Q373.42 -56.5 375.12 -58.4Q376.82 -60.3 380.22 -60.3H388.12V-51.6H377.62V-49.5Q381.12 -47.1 382.97 -43.5Q384.82 -39.9 384.82 -35.4Q384.82 -30.2 382.37 -26.2Q379.92 -22.2 375.27 -20Q370.62 -17.8 364.02 -17.8Q362.12 -17.8 360.37 -18Q358.62 -18.2 357.22 -18.6Q355.32 -17.9 353.82 -16.65Q352.32 -15.4 352.32 -13.4Q352.32 -11.3 354.17 -10.4Q356.02 -9.5 359.52 -9.5H372.32Q381.92 -9.5 386.27 -5.7Q390.62 -1.9 390.62 4.9ZM380.42 6.1Q380.42 3.3 378.27 1.75Q376.12 0.2 370.82 0.2H353.22Q351.42 1.2 350.57 2.75Q349.72 4.3 349.72 6.2Q349.72 9.3 352.22 11.3Q354.72 13.3 360.82 13.3H367.62Q374.02 13.3 377.22 11.5Q380.42 9.7 380.42 6.1ZM364.02 -25.6Q368.82 -25.6 371.47 -27.8Q374.12 -30 374.12 -34.4V-36.5Q374.12 -40.9 371.47 -43.1Q368.82 -45.3 364.02 -45.3Q359.22 -45.3 356.57 -43.1Q353.92 -40.9 353.92 -36.5V-34.4Q353.92 -30 356.57 -27.8Q359.22 -25.6 364.02 -25.6Z M408.62 0H397.72V-52H408.62V-41.7H409.12Q409.92 -44.3 411.67 -46.65Q413.42 -49 416.32 -50.5Q419.22 -52 423.42 -52H426.32V-41.5H422.02Q417.72 -41.5 414.72 -40.5Q411.72 -39.5 410.17 -37.7Q408.62 -35.9 408.62 -33.2Z M478.42 0H472.32Q469.32 0 467.17 -1.35Q465.02 -2.7 463.92 -5.2Q463.22 -6.8 463.02 -8.7H462.42Q460.92 -3.9 456.92 -1.35Q452.92 1.2 447.22 1.2Q439.22 1.2 434.82 -3Q430.42 -7.2 430.42 -14.3Q430.42 -19.5 432.97 -22.95Q435.52 -26.4 440.42 -28.15Q445.32 -29.9 452.62 -29.9H462.02V-34.3Q462.02 -39 459.42 -41.65Q456.82 -44.3 451.32 -44.3Q446.82 -44.3 443.87 -42.25Q440.92 -40.2 438.92 -37.2L432.42 -43.1Q435.02 -47.5 439.77 -50.35Q444.52 -53.2 452.02 -53.2Q462.02 -53.2 467.47 -48.45Q472.92 -43.7 472.92 -35V-8.9H478.42ZM462.02 -22.9H452.82Q447.12 -22.9 444.32 -21.1Q441.52 -19.3 441.52 -15.9V-14.1Q441.52 -10.7 443.92 -8.9Q446.32 -7.1 450.32 -7.1Q453.72 -7.1 456.32 -8.1Q458.92 -9.1 460.47 -11Q462.02 -12.9 462.02 -15.4Z M488.12 20V-52H499.02V-43.4H499.52Q501.12 -48.1 505.02 -50.65Q508.92 -53.2 514.12 -53.2Q520.72 -53.2 525.32 -49.95Q529.92 -46.7 532.37 -40.65Q534.82 -34.6 534.82 -26Q534.82 -17.5 532.37 -11.4Q529.92 -5.3 525.32 -2.05Q520.72 1.2 514.12 1.2Q508.92 1.2 505.12 -1.4Q501.32 -4 499.52 -8.6H499.02V20ZM510.82 -8Q516.52 -8 519.92 -11.75Q523.32 -15.5 523.32 -21.5V-30.5Q523.32 -36.5 519.92 -40.2Q516.52 -43.9 510.82 -43.9Q507.52 -43.9 504.87 -42.8Q502.22 -41.7 500.62 -39.7Q499.02 -37.7 499.02 -35V-17.4Q499.02 -14.4 500.62 -12.35Q502.22 -10.3 504.87 -9.15Q507.52 -8 510.82 -8Z M546.32 0V-74H557.22V-43.4H557.72Q559.42 -47.6 562.87 -50.4Q566.32 -53.2 572.32 -53.2Q580.32 -53.2 584.77 -47.9Q589.22 -42.6 589.22 -33V0H578.32V-31.7Q578.32 -37.8 575.97 -40.85Q573.62 -43.9 568.52 -43.9Q565.62 -43.9 563.07 -42.95Q560.52 -42 558.87 -40Q557.22 -38 557.22 -35V0Z"/></svg>
-</a>
-<div class="eyebrow">Polygraph · Press</div>
-<h1>Press kit</h1>
-<p class="lede">Everything for writing about Polygraph or showing it in a video: the short version, the facts, screenshots, clips and logos. Use any of it in your coverage without asking.</p>
-<div class="meta"><span>Polygraph <b>1.0</b> out <b>December 8, 2026</b></span><span>Blender <b>4.2</b> and later</span><span>Windows · macOS · Linux</span></div>
-<div class="kit"><a class="btn main" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-press-kit-1.0.zip">Download the press kit</a><span class="note">ZIP, 41.1 MB: images, screenshots, feature clips, logos and this page as text. The trailer and the GIFs are downloads of their own, below.</span></div>
+<div class="eyebrow">Blender add-on · Guide</div>
+<h1><svg class="logo" role="img" aria-label="Polygraph" xmlns="http://www.w3.org/2000/svg" viewBox="-4.81 -78.8 598.825 104.8"><title>Polygraph</title><path style="fill: var(--pen)" d="M0.114 -48.241Q2.495 -58.955 5.405 -63.843Q10.004 -71.569 18.172 -71.569Q23.047 -71.569 27.697 -65.984Q29.854 -63.393 34.025 -56.694Q42.43 -43.194 45.895 -43.194Q49.82 -43.194 58.134 -46.828Q69.969 -52 77.858 -52H122.215Q124.204 -52 125.609 -50.594Q127.015 -49.188 127.015 -47.2Q127.015 -45.212 125.609 -43.806Q124.204 -42.4 122.215 -42.4H77.858Q71.975 -42.4 61.978 -38.031Q51.826 -33.594 45.895 -33.594Q39.649 -33.594 33.787 -40.266Q30.896 -43.555 25.875 -51.62Q19.432 -61.969 18.172 -61.969Q15.461 -61.969 13.654 -58.933Q11.532 -55.368 9.486 -46.159Q9.054 -44.218 7.377 -43.15Q5.7 -42.083 3.759 -42.514Q1.818 -42.946 0.75 -44.623Q-0.317 -46.3 0.114 -48.241Z"/><path style="fill: var(--ink)" d="M0.114 -5.841Q2.495 -16.555 5.405 -21.443Q10.004 -29.169 18.172 -29.169Q23.047 -29.169 27.697 -23.584Q29.854 -20.993 34.025 -14.294Q42.43 -0.794 45.895 -0.794Q49.82 -0.794 58.134 -4.428Q69.969 -9.6 77.858 -9.6H122.215Q124.204 -9.6 125.609 -8.194Q127.015 -6.788 127.015 -4.8Q127.015 -2.812 125.609 -1.406Q124.204 0 122.215 0H77.858Q71.975 0 61.978 4.369Q51.826 8.806 45.895 8.806Q39.649 8.806 33.787 2.134Q30.896 -1.156 25.875 -9.22Q19.432 -19.569 18.172 -19.569Q15.461 -19.569 13.654 -16.533Q11.532 -12.968 9.486 -3.759Q9.054 -1.818 7.377 -0.75Q5.7 0.317 3.759 -0.114Q1.818 -0.546 0.75 -2.223Q-0.317 -3.9 0.114 -5.841Z"/><path style="fill: var(--ink)" d="M157.02 20V-52H167.92V-43.4H168.42Q170.02 -48.1 173.92 -50.65Q177.82 -53.2 183.02 -53.2Q189.62 -53.2 194.22 -49.95Q198.82 -46.7 201.27 -40.65Q203.72 -34.6 203.72 -26Q203.72 -17.5 201.27 -11.4Q198.82 -5.3 194.22 -2.05Q189.62 1.2 183.02 1.2Q177.82 1.2 174.02 -1.4Q170.22 -4 168.42 -8.6H167.92V20ZM179.72 -8Q185.42 -8 188.82 -11.75Q192.22 -15.5 192.22 -21.5V-30.5Q192.22 -36.5 188.82 -40.2Q185.42 -43.9 179.72 -43.9Q176.42 -43.9 173.77 -42.8Q171.12 -41.7 169.52 -39.7Q167.92 -37.7 167.92 -35V-17.4Q167.92 -14.4 169.52 -12.35Q171.12 -10.3 173.77 -9.15Q176.42 -8 179.72 -8Z M235.52 1.2Q228.22 1.2 222.87 -2.15Q217.52 -5.5 214.57 -11.6Q211.62 -17.7 211.62 -26Q211.62 -34.3 214.57 -40.4Q217.52 -46.5 222.87 -49.85Q228.22 -53.2 235.52 -53.2Q242.72 -53.2 248.07 -49.85Q253.42 -46.5 256.37 -40.4Q259.32 -34.3 259.32 -26Q259.32 -17.7 256.37 -11.6Q253.42 -5.5 248.07 -2.15Q242.72 1.2 235.52 1.2ZM235.52 -7.9Q241.12 -7.9 244.47 -11.35Q247.82 -14.8 247.82 -21.6V-30.4Q247.82 -37.2 244.47 -40.65Q241.12 -44.1 235.52 -44.1Q230.02 -44.1 226.57 -40.65Q223.12 -37.2 223.12 -30.4V-21.6Q223.12 -14.8 226.57 -11.35Q230.02 -7.9 235.52 -7.9Z M288.52 0H281.62Q276.02 0 273.22 -2.95Q270.42 -5.9 270.42 -10.9V-74H281.32V-8.9H288.52Z M318.62 -21.4 329.02 -52H339.52L317.62 10.3Q316.42 13.8 314.77 15.95Q313.12 18.1 310.57 19.05Q308.02 20 303.92 20H297.62V11.1H306.42L309.42 2.3L290.52 -52H301.42L311.82 -21.4L314.82 -10.1H315.32Z M390.62 4.9Q390.62 10.3 387.87 13.95Q385.12 17.6 379.32 19.4Q373.52 21.2 364.12 21.2Q355.72 21.2 350.47 19.7Q345.22 18.2 342.87 15.4Q340.52 12.6 340.52 8.7Q340.52 4.4 342.87 1.95Q345.22 -0.5 349.42 -1.3V-2.4Q346.52 -3.3 345.02 -5.4Q343.52 -7.5 343.52 -10.4Q343.52 -14.4 346.27 -16.55Q349.02 -18.7 352.82 -19.6V-20Q348.12 -22.2 345.67 -26.2Q343.22 -30.2 343.22 -35.4Q343.22 -40.7 345.67 -44.7Q348.12 -48.7 352.77 -50.95Q357.42 -53.2 363.92 -53.2Q366.62 -53.2 368.97 -52.8Q371.32 -52.4 373.42 -51.6V-53Q373.42 -56.5 375.12 -58.4Q376.82 -60.3 380.22 -60.3H388.12V-51.6H377.62V-49.5Q381.12 -47.1 382.97 -43.5Q384.82 -39.9 384.82 -35.4Q384.82 -30.2 382.37 -26.2Q379.92 -22.2 375.27 -20Q370.62 -17.8 364.02 -17.8Q362.12 -17.8 360.37 -18Q358.62 -18.2 357.22 -18.6Q355.32 -17.9 353.82 -16.65Q352.32 -15.4 352.32 -13.4Q352.32 -11.3 354.17 -10.4Q356.02 -9.5 359.52 -9.5H372.32Q381.92 -9.5 386.27 -5.7Q390.62 -1.9 390.62 4.9ZM380.42 6.1Q380.42 3.3 378.27 1.75Q376.12 0.2 370.82 0.2H353.22Q351.42 1.2 350.57 2.75Q349.72 4.3 349.72 6.2Q349.72 9.3 352.22 11.3Q354.72 13.3 360.82 13.3H367.62Q374.02 13.3 377.22 11.5Q380.42 9.7 380.42 6.1ZM364.02 -25.6Q368.82 -25.6 371.47 -27.8Q374.12 -30 374.12 -34.4V-36.5Q374.12 -40.9 371.47 -43.1Q368.82 -45.3 364.02 -45.3Q359.22 -45.3 356.57 -43.1Q353.92 -40.9 353.92 -36.5V-34.4Q353.92 -30 356.57 -27.8Q359.22 -25.6 364.02 -25.6Z M408.62 0H397.72V-52H408.62V-41.7H409.12Q409.92 -44.3 411.67 -46.65Q413.42 -49 416.32 -50.5Q419.22 -52 423.42 -52H426.32V-41.5H422.02Q417.72 -41.5 414.72 -40.5Q411.72 -39.5 410.17 -37.7Q408.62 -35.9 408.62 -33.2Z M478.42 0H472.32Q469.32 0 467.17 -1.35Q465.02 -2.7 463.92 -5.2Q463.22 -6.8 463.02 -8.7H462.42Q460.92 -3.9 456.92 -1.35Q452.92 1.2 447.22 1.2Q439.22 1.2 434.82 -3Q430.42 -7.2 430.42 -14.3Q430.42 -19.5 432.97 -22.95Q435.52 -26.4 440.42 -28.15Q445.32 -29.9 452.62 -29.9H462.02V-34.3Q462.02 -39 459.42 -41.65Q456.82 -44.3 451.32 -44.3Q446.82 -44.3 443.87 -42.25Q440.92 -40.2 438.92 -37.2L432.42 -43.1Q435.02 -47.5 439.77 -50.35Q444.52 -53.2 452.02 -53.2Q462.02 -53.2 467.47 -48.45Q472.92 -43.7 472.92 -35V-8.9H478.42ZM462.02 -22.9H452.82Q447.12 -22.9 444.32 -21.1Q441.52 -19.3 441.52 -15.9V-14.1Q441.52 -10.7 443.92 -8.9Q446.32 -7.1 450.32 -7.1Q453.72 -7.1 456.32 -8.1Q458.92 -9.1 460.47 -11Q462.02 -12.9 462.02 -15.4Z M488.12 20V-52H499.02V-43.4H499.52Q501.12 -48.1 505.02 -50.65Q508.92 -53.2 514.12 -53.2Q520.72 -53.2 525.32 -49.95Q529.92 -46.7 532.37 -40.65Q534.82 -34.6 534.82 -26Q534.82 -17.5 532.37 -11.4Q529.92 -5.3 525.32 -2.05Q520.72 1.2 514.12 1.2Q508.92 1.2 505.12 -1.4Q501.32 -4 499.52 -8.6H499.02V20ZM510.82 -8Q516.52 -8 519.92 -11.75Q523.32 -15.5 523.32 -21.5V-30.5Q523.32 -36.5 519.92 -40.2Q516.52 -43.9 510.82 -43.9Q507.52 -43.9 504.87 -42.8Q502.22 -41.7 500.62 -39.7Q499.02 -37.7 499.02 -35V-17.4Q499.02 -14.4 500.62 -12.35Q502.22 -10.3 504.87 -9.15Q507.52 -8 510.82 -8Z M546.32 0V-74H557.22V-43.4H557.72Q559.42 -47.6 562.87 -50.4Q566.32 -53.2 572.32 -53.2Q580.32 -53.2 584.77 -47.9Q589.22 -42.6 589.22 -33V0H578.32V-31.7Q578.32 -37.8 575.97 -40.85Q573.62 -43.9 568.52 -43.9Q565.62 -43.9 563.07 -42.95Q560.52 -42 558.87 -40Q557.22 -38 557.22 -35V0Z"/></svg>
+</h1>
+<p class="lede">The vertex count your engine sees, checked against a budget, with a short list of what to cut first.</p>
+<div class="meta"><span><b>1.0.0</b> current</span><span>Blender <b>4.2</b> and later</span><span>Windows · macOS · Linux</span><span><a href="license/">GPL-3.0-or-later</a></span></div>
+<svg class="trace" viewBox="0 0 520 40" aria-hidden="true" preserveAspectRatio="none">
+<line x1="0" y1="17" x2="520" y2="17" stroke="var(--near)" stroke-width="1.5" stroke-dasharray="6 5"/>
+<polyline fill="none" stroke="var(--pen)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+ points="0,34 40,31 80,24 105,17"/>
+<polyline fill="none" stroke="var(--over)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+ points="105,17 125,9 165,5 205,8 240,6 275,13 286,17"/>
+<polyline fill="none" stroke="var(--pen)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+ points="286,17 320,23 365,27 420,29 470,30 520,30"/>
+</svg>
 </div></header>
 <div class="wrap">
-<nav class="index" aria-label="Contents"><div class="eyebrow">Contents</div><ol><li><a href="#short">The short version</a></li><li><a href="#facts">Facts</a></li><li><a href="#does">What it does</a></li><li><a href="#images">Images</a></li><li><a href="#screens">Screenshots</a></li><li><a href="#clips">Video and clips</a></li><li><a href="#logos">Logos</a></li><li><a href="#copies">Review copies</a></li><li><a href="#maker">Who makes it</a></li><li><a href="#use">Using this material</a></li></ol></nav>
+<nav class="index" aria-label="Contents"><div class="eyebrow">Contents</div><ol><li><a href="#install">Install</a></li><li><a href="#first-run">First run</a></li><li><a href="#panels">The panels</a></li><li><a href="#engine-counts">Engine counts</a></li><li><a href="#budgets">Budgets</a></li><li><a href="#checks">Mesh checks</a></li><li><a href="#cut">Where to Cut</a></li><li><a href="#players-view">Player's view</a></li><li><a href="#reports">Reports</a></li><li><a href="#preferences">Preferences</a></li><li><a href="#pipeline">Command line</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#editions">Editions</a></li><li><a href="#changes">Changes</a></li><li><a href="#help">Help</a></li></ol></nav>
 <main>
-<section id="short"><h2><span class="no">01</span>The short version</h2>
-<p class="copy-label">In one line</p>
-<blockquote class="copy"><p>Polygraph is a Blender add-on that shows the vertex count your game engine will really get, checks it against a real platform budget, and tells you what to cut first.</p></blockquote>
-<p class="copy-label">In a paragraph</p>
-<blockquote class="copy"><p>Blender counts the vertices it stores. Unity, Unreal and glTF count them after splitting every UV seam and sharp edge, so a model can reach the engine several times heavier than Blender said. The default cube is 8 vertices in Blender and 24 in any engine. Polygraph counts the way each engine imports, live in the sidebar, and judges the scene against budgets taken from Meta, VRChat, Roblox, Apple, Epic and others. When a scene is over, it lists the changes that would save the most, largest first.</p></blockquote>
-</section>
+<figure class="film"><video controls playsinline preload="metadata" poster="media/polygraph-trailer-poster.jpg" width="1920" height="1080"><source src="media/polygraph-trailer.webm" type="video/webm"><source src="media/polygraph-trailer-720.mp4" type="video/mp4"></video><figcaption>Polygraph in 84 seconds. <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-trailer.mp4">Download it in full quality</a> (MP4, 1920 × 1080).</figcaption></figure>
+<section id="install"><h2><span class="no">01</span>Install</h2>
 
-<section id="facts"><h2><span class="no">02</span>Facts</h2>
-<table class="facts"><tbody>
-<tr><th scope="row">Name</th><td>Polygraph</td></tr>
-<tr><th scope="row">What it is</th><td>An add-on (extension) for Blender</td></tr>
-<tr><th scope="row">Made by</th><td>Waddle by Duck Initiative</td></tr>
-<tr><th scope="row">Release</th><td>1.0 on December 8, 2026. 2.0 on January 12, 2027, free for everyone who owns 1.x</td></tr>
-<tr><th scope="row">Runs on</th><td>Blender 4.2 and later, on Windows, macOS and Linux</td></tr>
-<tr><th scope="row">Counts for</th><td>glTF (Godot, three.js and other web loaders), Unity, and Unreal Engine with Nanite off</td></tr>
-<tr><th scope="row">Editions</th><td>Free; Pro for one person, $19; Studio for a team of five, $249. Pro and Studio go to $25 and $329 on January 12, 2027</td></tr>
-<tr><th scope="row">Where</th><td>Free on extensions.blender.org and Gumroad. Pro and Studio on Superhive and Gumroad</td></tr>
-<tr><th scope="row">Budgets</th><td>32 in Pro and Studio, 5 in Free. 26 of them cite the page their limits come from</td></tr>
-<tr><th scope="row">Mesh checks</th><td>21, in every edition</td></tr>
-<tr><th scope="row">Licence</th><td>GPL-3.0-or-later in every edition, so any edition can be used for paid work</td></tr>
-<tr><th scope="row">Needs</th><td>Nothing else. No account, no licence key, and it works offline</td></tr>
-<tr><th scope="row">Website</th><td><a href="https://duckinitiative.com/polygraph/">duckinitiative.com/polygraph</a></td></tr>
-<tr><th scope="row">Press contact</th><td><a href="mailto:hello@duckinitiative.com">hello@duckinitiative.com</a></td></tr>
-</tbody></table>
-</section>
+<p>Polygraph runs on Blender 4.2 and later, on Windows, macOS and Linux.</p>
+<ol class="steps">
+<li>Download the Polygraph zip. Keep it zipped.</li>
+<li>In Blender, open <b>Edit &gt; Preferences &gt; Get Extensions</b>.</li>
+<li>Open the menu at the top right of that page, choose <b>Install from Disk</b> and pick the zip.</li>
+<li>In the 3D Viewport, press <kbd>N</kbd> and open the <b>Polygraph</b> tab.</li>
+</ol>
+<p>To update, install the new zip the same way. Your settings and your own profiles stay where they are.</p>
+<p>Free, Pro and Studio share one extension id, so installing one replaces the other. That's on purpose: you never run two copies side by side.</p>
+<div class="aside"><p><b>On a Mac,</b> Safari unzips downloads by itself, which leaves a folder Blender can't install. Download with another browser, or turn off <i>Open safe files after downloading</i> in Safari &gt; Settings &gt; General. If it's already unzipped, compress the folder again in Finder and install that.</p></div>
 
-<section id="does"><h2><span class="no">03</span>What it does</h2>
-<ul class="short">
-<li>The vertex count glTF, Unity and Unreal will really load, live in the sidebar and in the viewport, with what each UV seam and sharp edge adds.</li>
-<li>A verdict against a real budget: Meta Quest, every VRChat rank, Roblox, Fortnite UEFN, visionOS, Second Life, The Sims 4 and more, or limits you type in.</li>
-<li>Where to Cut: the changes that would save the most, each with its cause and what it saves.</li>
-<li>What If, in Pro: assume a cut, a lower LOD or a triangle cap before touching a mesh, and see the verdict move.</li>
-<li>The player&#x27;s view, in Pro: judge only what the camera sees, and see a model at the size the player will.</li>
-<li>21 mesh checks, marked on the object and selectable in Edit Mode.</li>
-<li>Reports to hand over: HTML in every edition, with JSON, CSV and Markdown in Pro.</li>
-<li>In Studio, the same check on a build server from the command line, with JUnit results for CI.</li>
+</section><section id="first-run"><h2><span class="no">02</span>First run</h2>
+
+<p>The top panel of the Polygraph tab shows the scene's triangles, its engine vertices and its objects. The line above the numbers says what is counted, and each part of it is a menu:</p>
+<dl class="panels">
+<dt>Scope</dt><dd>Visible objects, the whole view layer (hidden ones included), the selection, or one collection and its children.</dd>
+<dt>Evaluation</dt><dd>Viewport counts the geometry as the viewport shows it, modifiers and Geometry Nodes included. Base Mesh counts it without modifiers.</dd>
+<dt>Target</dt><dd>glTF, Unity or Unreal Engine. It decides how vertices are counted. glTF is the default, and it is also the right choice for Godot, three.js and other web loaders.</dd>
+</dl>
+<p>Pick a budget from the menu under the numbers, or choose Custom and type your own limits. From then on the panel gives a verdict, worked out from the single worst limit rather than a blended score:</p>
+<div class="verdicts">
+<span class="verdict"><i style="background: var(--pen)"></i>Within budget</span>
+<span class="verdict"><i style="background: var(--near)"></i>Close to the limit</span>
+<span class="verdict"><i style="background: var(--over)"></i>Over budget</span>
+</div>
+<p>Close starts at 85% of a limit, unless the budget says otherwise. Meta Quest budgets, for example, start warning earlier.</p>
+
+</section><section id="panels"><h2><span class="no">03</span>The panels</h2>
+
+<dl class="panels">
+<dt>Polygraph</dt><dd>The verdict, the budget, the scene totals and Where to Cut.</dd>
+<dt>Viewport</dt><dd>Four switches: Stats (the readout in the viewport), Heatmap, In Camera and Pixel Preview, each with its options underneath.</dd>
+<dt>Objects</dt><dd>Every object, mesh, collection or LOD chain, with the columns you choose: triangles, engine vertices, budget used, faults, texel density, screen coverage, triangles per pixel, or the change since a snapshot. Click a column to sort by it.</dd>
+<dt>Materials</dt><dd>Draw calls, material slots, texture memory and the largest textures.</dd>
+<dt>Active Object</dt><dd>The selected object's figures, and how much each cause adds to its engine count.</dd>
+<dt>Checks</dt><dd>The 21 mesh checks, with buttons to mark the faults on the object or select them in Edit Mode.</dd>
+</dl>
+<p>Two preferences put Polygraph elsewhere too: <b>Total in the Viewport Header</b> shows the scene's triangles in the 3D Viewport's header, and <b>Panel in Scene Properties</b> repeats the panels in the Scene tab of the Properties editor.</p>
+
+<div class="loops one"><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-06-heatmap.jpg" width="1280" height="720"><source src="press/clips/polygraph-06-heatmap.mp4" type="video/mp4"></video><figcaption>Heatmap. Every object coloured by what it costs. Nothing in the file changes.</figcaption></figure></div>
+</section><section id="engine-counts"><h2><span class="no">04</span>Engine counts</h2>
+
+<p>Blender stores one vertex for each corner position. A game engine needs one for every different normal, UV and colour that meets at a corner, so it splits vertices along UV seams, sharp edges and flat-shaded faces. The default cube is 8 vertices in Blender and 24 in any engine.</p>
+<p>Polygraph counts the way each target imports:</p>
+<dl class="panels">
+<dt>glTF</dt><dd>Vertices as Blender's own glTF exporter writes them.</dd>
+<dt>Unity</dt><dd>Vertices of a model imported into Unity. The Tangents option counts the vertices Unity adds for tangents; turn it off if you import with Tangents set to None.</dd>
+<dt>Unreal Engine</dt><dd>Vertices of a static mesh, with Nanite off.</dd>
+</dl>
+<p>When a figure can only be estimated, it carries <code>≈</code> in front. A mesh over 65,535 engine vertices gets a note that it needs 32-bit indices, which some mobile targets don't like.</p>
+<p>The Active Object panel breaks the count down by cause, so you can see which seam or sharp edge is costing what. On a very dense mesh this takes a moment, so press <b>Explain Vertex Count</b> to work it out.</p>
+
+<div class="loops"><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-01-engine-vertex-count.jpg" width="1280" height="720"><source src="press/clips/polygraph-01-engine-vertex-count.mp4" type="video/mp4"></video><figcaption>The count your engine sees. Blender says 8. glTF loads 24, and Polygraph says why.</figcaption></figure><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-02-engine-targets.jpg" width="1280" height="720"><source src="press/clips/polygraph-02-engine-targets.mp4" type="video/mp4"></video><figcaption>Unity, Unreal or glTF. Pick the engine. Every count follows its import rules.</figcaption></figure></div>
+</section><section id="budgets"><h2><span class="no">05</span>Budgets</h2>
+
+<p>A budget is a small JSON file of limits. Some limits apply to the whole scene, some to each object, and some to objects whose names match a pattern, such as <code>*_hair</code>. Polygraph ships 32. 26 cite the page their limits come from, and the note under each one says when a figure is a community rule or a starting point. The other six are starting points to copy and set to your own project's numbers. Free includes the five marked below.</p>
+<div class="tablewrap"><table class="budgets">
+<thead><tr><th>Budget</th><th>Limits</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td><span class="bname">Meta Quest 2 and Pro</span><span class="bnote">Triangles per frame, 750k to 1M. Draw calls for a medium simulation, 200 to 300.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">1,000,000 triangles</span>, <span class="q">300 draw calls</span></span></div></td><td class="src"><a href="https://developers.meta.com/horizon/documentation/unity/unity-perf/">developers.meta.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">Meta Quest 3 and 3S</span><span class="tag free">Free</span><span class="bnote">Triangles per frame, 1.3M to 1.8M. Draw calls for a medium simulation, 400 to 600.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">1,800,000 triangles</span>, <span class="q">600 draw calls</span></span></div></td><td class="src"><a href="https://developers.meta.com/horizon/documentation/unity/unity-perf/">developers.meta.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat Mobile, Excellent</span><span class="bnote">The whole avatar: 7,500 triangles, 1 material slot, 1 skinned mesh, 75 bones, 10 MB of textures.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">7,500 triangles</span>, <span class="q">1 material slot</span>, <span class="q">1 skinned mesh</span>, <span class="q">75 bones</span>, <span class="q">10 MB of textures</span></span></div></td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat Mobile, Good</span><span class="bnote">The whole avatar: 10,000 triangles, 1 material slot, 1 skinned mesh, 90 bones, 18 MB of textures.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">10,000 triangles</span>, <span class="q">1 material slot</span>, <span class="q">1 skinned mesh</span>, <span class="q">90 bones</span>, <span class="q">18 MB of textures</span></span></div></td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat Mobile, Medium</span><span class="bnote">The whole avatar: 15,000 triangles, 2 material slots, 2 skinned meshes, 150 bones, 25 MB of textures.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">15,000 triangles</span>, <span class="q">2 material slots</span>, <span class="q">2 skinned meshes</span>, <span class="q">150 bones</span>, <span class="q">25 MB of textures</span></span></div></td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat Mobile, Poor</span><span class="bnote">The whole avatar: 20,000 triangles, 4 material slots, 2 skinned meshes, 150 bones, 40 MB of textures.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">20,000 triangles</span>, <span class="q">4 material slots</span>, <span class="q">2 skinned meshes</span>, <span class="q">150 bones</span>, <span class="q">40 MB of textures</span></span></div></td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat PC, Excellent</span><span class="bnote">The whole avatar: 32,000 triangles, 4 material slots, 1 skinned mesh, 75 bones, 40 MB of textures.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">32,000 triangles</span>, <span class="q">4 material slots</span>, <span class="q">1 skinned mesh</span>, <span class="q">75 bones</span>, <span class="q">40 MB of textures</span></span></div></td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat PC, Good</span><span class="bnote">The whole avatar: 70,000 triangles, 8 material slots, 2 skinned meshes, 150 bones, 75 MB of textures.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">70,000 triangles</span>, <span class="q">8 material slots</span>, <span class="q">2 skinned meshes</span>, <span class="q">150 bones</span>, <span class="q">75 MB of textures</span></span></div></td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat PC, Medium</span><span class="bnote">The whole avatar: 70,000 triangles, 16 material slots, 8 skinned meshes, 256 bones, 110 MB of textures.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">70,000 triangles</span>, <span class="q">16 material slots</span>, <span class="q">8 skinned meshes</span>, <span class="q">256 bones</span>, <span class="q">110 MB of textures</span></span></div></td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">VRChat PC, Poor</span><span class="bnote">The whole avatar: 70,000 triangles, 32 material slots, 16 skinned meshes, 400 bones, 150 MB of textures.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">70,000 triangles</span>, <span class="q">32 material slots</span>, <span class="q">16 skinned meshes</span>, <span class="q">400 bones</span>, <span class="q">150 MB of textures</span></span></div></td><td class="src"><a href="https://creators.vrchat.com/avatars/avatar-performance-ranking-system/">creators.vrchat.com</a><span class="checked">checked 2026-11-16</span></td></tr>
+<tr><td><span class="bname">Roblox mesh</span><span class="tag free">Free</span><span class="bnote">20,000 triangles per mesh.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">20,000 triangles</span></span></div></td><td class="src"><a href="https://create.roblox.com/docs/art/modeling/specifications">create.roblox.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">Roblox rigid accessory</span><span class="bnote">4,000 triangles for one accessory, which must be a single closed mesh. Textures up to 1024 × 1024, and 256 × 256 is often enough.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">4,000 triangles</span></span></div></td><td class="src"><a href="https://create.roblox.com/docs/avatar/rigid-accessories/specifications">create.roblox.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Fortnite UEFN, large prop</span><span class="bnote">Epic&#x27;s LOD0 target for a large object is 2,500. Its validator warns past 30,000 vertices in a mesh.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">2,500 triangles</span>, <span class="q">30,000 vertices</span></span></div></td><td class="src"><a href="https://dev.epicgames.com/documentation/fortnite/fortniteready-assets-best-practices-in-fortnite">dev.epicgames.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Fortnite UEFN, medium prop</span><span class="bnote">Epic&#x27;s LOD0 target for a medium object is 900. Its validator warns past 30,000 vertices in a mesh.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">900 triangles</span>, <span class="q">30,000 vertices</span></span></div></td><td class="src"><a href="https://dev.epicgames.com/documentation/fortnite/fortniteready-assets-best-practices-in-fortnite">dev.epicgames.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Fortnite UEFN, small prop</span><span class="bnote">Epic&#x27;s LOD0 target for a small, simple object is 400. Its validator warns past 30,000 vertices in a mesh.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">400 triangles</span>, <span class="q">30,000 vertices</span></span></div></td><td class="src"><a href="https://dev.epicgames.com/documentation/fortnite/fortniteready-assets-best-practices-in-fortnite">dev.epicgames.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">visionOS, Full Space</span><span class="bnote">Under 500,000 triangles and 500 draw calls.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">500,000 triangles</span>, <span class="q">500 draw calls</span></span></div></td><td class="src"><a href="https://developer.apple.com/documentation/visionos/reducing-the-rendering-cost-of-realitykit-content-on-visionos">developer.apple.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">visionOS, Shared Space</span><span class="bnote">Under 250,000 triangles and 250 draw calls.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">250,000 triangles</span>, <span class="q">250 draw calls</span></span></div></td><td class="src"><a href="https://developer.apple.com/documentation/visionos/reducing-the-rendering-cost-of-realitykit-content-on-visionos">developer.apple.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">Apple AR Quick Look</span><span class="bnote">Apple&#x27;s long-standing advice for USDZ: under 100,000 triangles, textures up to 2048 × 2048, and 1024 × 1024 where it is enough. What runs out first is memory, not file size.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">100,000 triangles</span></span></div></td><td class="src"><a href="https://developer.apple.com/forums/thread/693867">developer.apple.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">3D Commerce, desktop web</span><span class="bnote">250,000 triangles and under 100 draw calls for a product.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">250,000 triangles</span>, <span class="q">100 draw calls</span></span></div></td><td class="src"><a href="https://github.com/mlimper/3DC-Asset-Creation/blob/main/asset-creation-guidelines/full-version/sec99_PublishingTargets/PublishingTargets.md">github.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">3D Commerce, mobile AR</span><span class="bnote">150,000 triangles and under 20 draw calls for a product.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">150,000 triangles</span>, <span class="q">20 draw calls</span></span></div></td><td class="src"><a href="https://github.com/mlimper/3DC-Asset-Creation/blob/main/asset-creation-guidelines/full-version/sec99_PublishingTargets/PublishingTargets.md">github.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">Second Life mesh</span><span class="bnote">Up to 65,536 vertices in a model and up to 8 faces, one per material. Land impact grows with every level of detail, so keep the lower ones light.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">65,536 vertices</span></span></div></td><td class="src"><a href="https://wiki.secondlife.com/wiki/Mesh/Technical_Overview">wiki.secondlife.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">The Sims 4, Create a Sim</span><span class="bnote">EA&#x27;s LOD0 targets by kind, read from object names: hair 4,000, full body 5,800, top 3,300, bottom 1,200, shoes 800, hat, earrings and necklace 1,200, nails 500. Up to 10% over can pass. Diffuse and specular maps are 1024 × 2048.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">5,800 triangles</span></span></div><div class="limline"><span class="lim">By name</span><span class="val"><span class="words">limits per kind of object</span></span></div></td><td class="src"><a href="https://media.contentapi.ea.com/content/dam/eacom/SIMS/common/create-a-sim-technical-test-criteria.pdf">media.contentapi.ea.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Minecraft Bedrock, block or entity</span><span class="bnote">Mojang publishes no triangle limit. Block geometry must fit within 30 × 30 × 30 pixels of the origin, and textures smaller than 16 × 16 are stretched. The triangle and texture figures here are starting points that keep a model light on phones.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">2,000 triangles</span></span></div></td><td class="src"><a href="https://www.minecraft.net/en-us/creator/article/custom-block-geometry-release">minecraft.net</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">GTA V and FiveM, vehicle</span><span class="bnote">Community limits, not Rockstar&#x27;s: texture dictionaries over 16 MB fail to stream, and the closest level of detail is kept under 200,000 triangles.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">200,000 triangles</span>, <span class="q">16 MB of textures</span></span></div></td><td class="src"><a href="https://forum.cfx.re/t/how-to-split-vehicle-ytd-files-to-avoid-16mb-stream-limit/142734">forum.cfx.re</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">Android, 16-bit meshes</span><span class="bnote">Keep every mesh under 65,535 vertices so it can use 16-bit indices.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">65,535 vertices</span></span></div></td><td class="src"><a href="https://developer.android.com/games/optimize/geometry">developer.android.com</a><span class="checked">checked 2026-11-15</span></td></tr>
+<tr><td><span class="bname">3D printing service</span><span class="bnote">Print services take up to about 1,000,000 polygons in one file. The model must be closed: the Non-manifold Edges and Open Edges checks show where it is not.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">1,000,000 triangles</span></span></div></td><td class="src"><a href="https://support.shapeways.com/hc/en-nl/articles/17000648918300-How-to-upload-your-3D-model">support.shapeways.com</a><span class="checked">checked 2026-11-18</span></td></tr>
+<tr><td><span class="bname">AA game</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">3,000,000 triangles</span></span></div><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">40,000 triangles</span></span></div></td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Hero asset</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">100,000 triangles</span></span></div></td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Indie game</span><span class="tag free">Free</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">1,000,000 triangles</span></span></div><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">15,000 triangles</span></span></div></td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Mobile game</span><span class="tag free">Free</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">200,000 triangles</span></span></div><div class="limline"><span class="lim">Each object</span><span class="val"><span class="q">5,000 triangles</span></span></div></td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Real-time archviz walkthrough</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">10,000,000 triangles</span>, <span class="q">5,000 draw calls</span>, <span class="q">4,096 MB of textures</span></span></div></td><td class="src"><span class="muted">Starting point</span></td></tr>
+<tr><td><span class="bname">Web viewer (three.js, model-viewer)</span><span class="tag free">Free</span><span class="bnote">A starting point, not a published limit. Save a copy and set it to your project&#x27;s numbers.</span></td>
+<td class="limits"><div class="limline"><span class="lim">Scene</span><span class="val"><span class="q">300,000 triangles</span>, <span class="q">100 draw calls</span>, <span class="q">64 MB of textures</span></span></div></td><td class="src"><span class="muted">Starting point</span></td></tr>
+</tbody></table></div>
+<h3>Your own budgets</h3>
+<p>Type limits into the Custom budget, or keep the current ones with <b>Save as Profile</b>. Your profiles live in Blender's folder for extension data; <b>Open Your Profiles Folder</b> in the preferences, under Budget Profiles, takes you there. A file you add, change or delete shows up in the menu within a second, with no restart. Where one of yours has the same name as a shipped one, yours wins.</p>
+<p>A profile looks like this. Every field is optional apart from at least one limit.</p>
+<pre><code>{
+  "name": "Our mobile game",
+  "note": "Agreed with the lead on 3 March.",
+  "near": 0.85,
+  "scene":  { "triangles": 250000, "draw_calls": 120, "texture_memory_mb": 256 },
+  "object": { "triangles": 8000 },
+  "classes": [ { "match": "hero_*", "triangles": 30000, "distance": 3 } ],
+  "textures": { "largest": 2048, "power_of_two": true }
+}</code></pre>
+<p class="muted">Limits can be set on <code>triangles</code>, <code>vertices</code>, <code>objects</code>, <code>draw_calls</code>, <code>material_slots</code>, <code>materials</code>, <code>texture_memory_mb</code>, <code>bones</code> and <code>skinned_meshes</code>. <code>distance</code> is the metres an object is usually seen from, and <code>display</code> takes a screen's <code>height</code> and <code>fov</code>, or a headset's <code>pixels_per_degree</code>.</p>
+<h3>Bringing budgets in <span class="tag pro">Pro</span></h3>
+<p><b>Import Budget from CSV</b> and <b>Export Budget as CSV</b> move limits to and from a spreadsheet. <b>Import Khronos Audit Profile</b> reads a profile written for the Khronos glTF Asset Auditor.</p>
+<h3>Budgets for a whole team <span class="tag studio">Studio</span></h3>
+<p>Put profiles in a folder named <code>polygraph_profiles</code> next to the project's .blend files, or in any folder above them. Everyone who opens a file under it gets the same budgets, and so does the command line check.</p>
+
+<div class="loops"><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-03-budgets.jpg" width="1280" height="720"><source src="press/clips/polygraph-03-budgets.mp4" type="video/mp4"></video><figcaption>32 budgets. Quest, VRChat, Roblox, visionOS and more, each with its source.</figcaption></figure><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-04-fix-it-live.jpg" width="1280" height="720"><source src="press/clips/polygraph-04-fix-it-live.mp4" type="video/mp4"></video><figcaption>Fix it live. Lower one modifier and the verdict turns.</figcaption></figure></div>
+</section><section id="checks"><h2><span class="no">06</span>Mesh checks</h2>
+
+<p>21 checks run on every object in scope. Faults are things an engine or a printer will object to. Notes describe the mesh and are often fine, depending on what it is for. <b>Mark on Object</b> draws what a check found in the viewport, and <b>Select in Edit Mode</b> selects it. <b>Check Thresholds</b> sets the merge distance, the smallest face area, the needle angle and the sharp angle.</p>
+<div class="tablewrap"><table class="compact">
+<thead><tr><th>Check</th><th></th><th>Looks at</th><th>What it finds</th></tr></thead>
+<tbody>
+<tr><td class="cname">N-gons</td><td><span class="tag fault">Fault</span></td><td class="muted">Faces</td><td>Faces with more than four corners.</td></tr>
+<tr><td class="cname">Doubles</td><td><span class="tag fault">Fault</span></td><td class="muted">Vertices</td><td>Vertices that sit closer to another vertex than the merge distance.</td></tr>
+<tr><td class="cname">Loose Vertices</td><td><span class="tag fault">Fault</span></td><td class="muted">Vertices</td><td>Vertices that belong to no edge.</td></tr>
+<tr><td class="cname">Loose Edges</td><td><span class="tag fault">Fault</span></td><td class="muted">Edges</td><td>Edges that belong to no face.</td></tr>
+<tr><td class="cname">Non-manifold Edges</td><td><span class="tag fault">Fault</span></td><td class="muted">Edges</td><td>Edges shared by more than two faces.</td></tr>
+<tr><td class="cname">Faces without Area</td><td><span class="tag fault">Fault</span></td><td class="muted">Faces</td><td>Faces folded onto a line or a point.</td></tr>
+<tr><td class="cname">Tiny Faces</td><td><span class="tag fault">Fault</span></td><td class="muted">Faces</td><td>Faces smaller than the smallest area allowed.</td></tr>
+<tr><td class="cname">Needle Triangles</td><td><span class="tag fault">Fault</span></td><td class="muted">Faces</td><td>Faces that hold a triangle thinner than the needle angle, once they are split into triangles.</td></tr>
+<tr><td class="cname">Smooth over Sharp</td><td><span class="tag fault">Fault</span></td><td class="muted">Edges</td><td>Smooth-shaded edges whose faces meet at more than the sharp angle. They shade as a dark smear.</td></tr>
+<tr><td class="cname">No UV Map</td><td><span class="tag fault">Fault</span></td><td class="muted">Object</td><td>The mesh has faces and no UV map to texture them with.</td></tr>
+<tr><td class="cname">Negative Scale</td><td><span class="tag fault">Fault</span></td><td class="muted">Object</td><td>The object is mirrored by a negative scale. Engines turn such a mesh inside out unless the scale is applied first.</td></tr>
+<tr><td class="cname">Unapplied Scale</td><td><span class="tag note">Note</span></td><td class="muted">Object</td><td>The object&#x27;s scale is not 1. Fine for a placed copy, a fault in a mesh that is exported by itself.</td></tr>
+<tr><td class="cname">UVs outside 0 to 1</td><td><span class="tag note">Note</span></td><td class="muted">Faces</td><td>Faces whose UVs leave the unit square. Fine for tiling textures, a fault in a lightmap or an atlas.</td></tr>
+<tr><td class="cname">Triangles</td><td><span class="tag note">Note</span></td><td class="muted">Faces</td><td>Faces with three corners.</td></tr>
+<tr><td class="cname">Open Edges</td><td><span class="tag note">Note</span></td><td class="muted">Edges</td><td>Edges on a border, with a face on one side only.</td></tr>
+<tr><td class="cname">3-edge Poles</td><td><span class="tag note">Note</span></td><td class="muted">Vertices</td><td>Vertices inside the surface where three edges meet.</td></tr>
+<tr><td class="cname">5-edge Poles</td><td><span class="tag note">Note</span></td><td class="muted">Vertices</td><td>Vertices inside the surface where five edges meet.</td></tr>
+<tr><td class="cname">6+ edge Poles</td><td><span class="tag note">Note</span></td><td class="muted">Vertices</td><td>Vertices inside the surface where six or more edges meet.</td></tr>
+<tr><td class="cname">Flat Vertices</td><td><span class="tag note">Note</span></td><td class="muted">Vertices</td><td>Vertices inside a flat area. They add triangles and no shape.</td></tr>
+<tr><td class="cname">Fragments</td><td><span class="tag note">Note</span></td><td class="muted">Faces</td><td>Separate pieces with a tiny part of the object&#x27;s surface. Scans and conversions leave them behind.</td></tr>
+<tr><td class="cname">Diagonal Slivers</td><td><span class="tag note">Note</span></td><td class="muted">Faces</td><td>Large triangles that lie diagonally across the box around them. Ray tracing finds them slowly.</td></tr>
+</tbody></table></div>
+
+<div class="loops one"><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-07-mesh-checks.jpg" width="1280" height="720"><source src="press/clips/polygraph-07-mesh-checks.mp4" type="video/mp4"></video><figcaption>Mesh checks. Add a cylinder and its n-gon caps are flagged before you export.</figcaption></figure></div>
+</section><section id="cut"><h2><span class="no">07</span>Where to Cut and What If</h2>
+
+<p><b>Where to Cut</b>, at the bottom of the top panel, lists the changes that would save the most, largest first. Each one names its cause, the share it would save and what to do about it, and the arrow beside it selects the objects it's about. Free shows the top three; Pro shows them all.</p>
+<p><b>What If</b> <span class="tag pro">Pro</span> lets you assume something about the selected objects before you touch them: that they're gone, that they switch to their next LOD, or that their triangles are capped. Every figure and the verdict then read as if you had. <b>Take Back Every Assumption</b> clears them. Nothing in the file changes until you make the edit yourself.</p>
+<p><b>Edit receipts</b> <span class="tag pro">Pro</span> price each edit of the active object: the triangles and vertices it added or saved.</p>
+
+<div class="loops"><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-05-where-to-cut.jpg" width="1280" height="720"><source src="press/clips/polygraph-05-where-to-cut.mp4" type="video/mp4"></video><figcaption>Where to Cut. Every change worth making, with its cause and its saving.</figcaption></figure><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-09-what-if.jpg" width="1280" height="720"><source src="press/clips/polygraph-09-what-if.mp4" type="video/mp4"></video><figcaption>What If. Try a cut on paper before you touch a mesh.</figcaption></figure><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-11-edit-receipts.jpg" width="1280" height="720"><source src="press/clips/polygraph-11-edit-receipts.mp4" type="video/mp4"></video><figcaption>Edit receipts. Every edit, priced in triangles the moment you make it.</figcaption></figure></div>
+</section><section id="players-view"><h2><span class="no">08</span>Player's view<span class="tag pro">Pro</span></h2>
+
+<p>Budgets for headsets and phones are stated per frame, so what matters is what the player can see.</p>
+<dl class="panels">
+<dt>In Camera</dt><dd>Judges only what the active camera can see, once what stands in front of it is taken away. The Objects list gains screen coverage and triangles per pixel.</dd>
+<dt>Pixel Preview</dt><dd>Shows a model at the size the player will see it, in pixels, for a flat screen (its height and field of view) or a headset (pixels per degree).</dd>
+<dt>Heatmap</dt><dd>Colours every object by triangles. Pro adds share of the scene, budget, triangle density, pixels per triangle, overdraw, and triangles per camera pixel, where objects the camera never sees are hottest.</dd>
+<dt>Measured</dt><dd>LOD switch distances, overdraw, an estimate of ray tracing cost and the cost of shadows, each measured from the scene rather than guessed.</dd>
+</dl>
+<div class="loops"><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-08-in-camera.jpg" width="1280" height="720"><source src="press/clips/polygraph-08-in-camera.mp4" type="video/mp4"></video><figcaption>In Camera. Judge only what the camera sees, and find what it never does.</figcaption></figure><figure><video class="loop" muted loop playsinline preload="none" poster="press/thumbs/polygraph-10-pixel-preview.jpg" width="1280" height="720"><source src="press/clips/polygraph-10-pixel-preview.mp4" type="video/mp4"></video><figcaption>Pixel Preview. See how many pixels a model really gets on the player's screen.</figcaption></figure></div>
+</section><section id="reports"><h2><span class="no">09</span>Reports and snapshots</h2>
+
+<p><b>Export Report</b> writes an HTML report you can send to anyone: the verdict, every limit, the heaviest objects, the textures and Where to Cut. <span class="tag pro">Pro</span> adds JSON, CSV and Markdown, and <span class="tag studio">Studio</span> puts your studio's name and logo on it.</p>
+<p><b>Take Snapshot</b> <span class="tag pro">Pro</span> keeps the current figures, and <b>Compare With Snapshot</b> shows what changed since, line by line. <b>Copy Summary</b> <span class="tag pro">Pro</span> puts a short text summary on the clipboard for a chat or a ticket.</p>
+
+</section><section id="preferences"><h2><span class="no">10</span>Preferences</h2>
+
+<p>Edit &gt; Preferences &gt; Add-ons &gt; Polygraph. The ones people change most:</p>
+<dl class="panels">
+<dt>Show</dt><dd>How much Polygraph shows, and in which words.</dd>
+<dt>Numbers</dt><dd>How large numbers are written.</dd>
+<dt>Tab Name</dt><dd>The Sidebar tab Polygraph lives in. Give it another tool's tab name to share a tab.</dd>
+<dt>Stats</dt><dd>The readout in the viewport, with its position, backdrop and size.</dd>
+<dt>Palette</dt><dd>The colours Polygraph draws with: purple paper with a green pen, or Orchid, which follows your theme.</dd>
+<dt>Color Vision</dt><dd>Standard, or Safe, which moves the close and over colours apart for colour-blind eyes.</dd>
+<dt>Heatmap Opacity</dt><dd>How strongly the heatmap covers the viewport's own shading.</dd>
+</dl>
+
+</section><section id="pipeline"><h2><span class="no">11</span>Command line and Python<span class="tag studio">Studio</span></h2>
+
+<p>Polygraph measures a .blend file the same way from the panel, from a build script and from Python, and all three write the same report. Nothing is sent anywhere, and nothing in the file is changed.</p>
+<pre><code>blender -b level.blend --command polygraph check --profile meta_quest_3 --target UNITY --junit results.xml
+blender --command polygraph profiles</code></pre>
+<div class="tablewrap"><table class="compact">
+<thead><tr><th>Exit code</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>0</code></td><td>Within budget, or no budget set</td></tr>
+<tr><td><code>1</code></td><td>Over budget. With <code>--strict</code>, close to a limit counts too</td></tr>
+<tr><td><code>2</code></td><td>Something went wrong: an unknown profile, scene or target, or a file that couldn't be written</td></tr>
+</tbody></table></div>
+<div class="tablewrap"><table class="compact">
+<thead><tr><th>Option</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>--profile ID</code></td><td>Judge against this budget. It can also be the path of a profile's JSON file, or of a Khronos glTF Asset Auditor profile. <code>NONE</code> judges nothing. Without it, the scene's own budget is used</td></tr>
+<tr><td><code>--target UNREAL|UNITY|GLTF</code></td><td>Count vertices as this engine does. Without it, the scene's own target</td></tr>
+<tr><td><code>--scene NAME</code>, <code>--view-layer NAME</code></td><td>Measure another scene or view layer</td></tr>
+<tr><td><code>--strict</code></td><td>Fail when a limit is close as well as when it's passed</td></tr>
+<tr><td><code>--no-checks</code>, <code>--no-materials</code></td><td>Leave out the mesh checks, or draw calls and textures, to save time</td></tr>
+<tr><td><code>--json</code>, <code>--csv</code>, <code>--html</code>, <code>--markdown PATH</code></td><td>Write that kind of report</td></tr>
+<tr><td><code>--junit PATH</code></td><td>Write JUnit results: one test for each scene limit and each object with a limit</td></tr>
+</tbody></table></div>
+<p>Polygraph has to be installed and enabled in the Blender that runs the command. A build machine can give Blender a folder of its own with <code>BLENDER_USER_RESOURCES</code>, install Polygraph there once, and leave everyone else's setup alone.</p>
+<h3>Python</h3>
+<pre><code>import bl_ext.user_default.polygraph.api as polygraph
+
+result = polygraph.evaluate()
+if result["budget"]["state"] == "OVER":
+    for entry in result["objects"]:
+        if entry["verdict"] and entry["verdict"]["state"] == "OVER":
+            print(entry["name"], entry["triangles"])</code></pre>
+<p><code>evaluate()</code> returns the report as a dictionary, <code>profiles()</code> lists every budget, and <code>write_report(path)</code> writes a report whose kind follows the file extension: <code>.html</code>, <code>.json</code>, <code>.csv</code>, <code>.md</code>, or <code>.xml</code> for JUnit. The module path depends on the repository Polygraph was installed from; <code>user_default</code> is the one Blender uses for extensions installed from disk.</p>
+<p class="muted">The report's schema is <code>polygraph-report/1</code>. Fields are only ever added to a version, never renamed, removed or given another meaning.</p>
+
+</section><section id="privacy"><h2><span class="no">12</span>Privacy</h2>
+
+<p>Polygraph works offline. Nothing about your files ever leaves your computer.</p>
+<p>The Gumroad and Superhive builds can check for a newer version. The check is off until you switch on <b>Check for Updates</b> in the preferences, and it also waits for Blender's own Allow Online Access. Once a day it reads one small file on this site that names the latest version. The request carries nothing about you or your files, only the name Polygraph. The extensions.blender.org build has no update check at all, because Blender updates it for you.</p>
+
+</section><section id="editions"><h2><span class="no">13</span>Editions</h2>
+
+<p>Every edition is GPL, so every one of them can be used for paid work. A cheaper edition carries no locked code from a dearer one: what it doesn't have isn't in the zip.</p>
+<div class="editions">
+<div class="ed"><h3>Free</h3><p>Whether the scene fits, and what's wrong with it. Engine counts, five budgets, the 21 checks, the top three cuts and the HTML report.</p>
+<div class="where"><a class="btn" href="https://waddlebyduck.gumroad.com/l/polygraph-free">Gumroad</a></div></div>
+<div class="ed"><h3>Pro</h3><p>For one person. All 32 budgets, What If, the player's view, edit receipts, snapshots and every report format.</p>
+<div class="where"><a class="btn" href="https://waddlebyduck.gumroad.com/l/polygraph">Gumroad</a><a class="btn" href="https://superhivemarket.com/products/polygraph">Superhive</a></div></div>
+<div class="ed"><h3>Studio</h3><p>For a team of five. The command line check, the Python API, team budget folders, your name on reports and answers within two working days.</p>
+<div class="where"><a class="btn" href="https://waddlebyduck.gumroad.com/l/polygraph">Gumroad</a><a class="btn" href="https://superhivemarket.com/products/polygraph">Superhive</a></div></div>
+</div>
+<div class="tablewrap"><table class="compact">
+<thead><tr><th>Feature</th><th>Free</th><th>Pro</th><th>Studio</th></tr></thead>
+<tbody>
+<tr><td>Engine counts for glTF, Unity and Unreal</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr><tr><td>Budgets</td><td class="yes">5</td><td class="yes">32</td><td class="yes">32</td></tr><tr><td>Mesh checks</td><td class="yes">21</td><td class="yes">21</td><td class="yes">21</td></tr><tr><td>Where to Cut</td><td class="yes">Top 3</td><td class="yes">All</td><td class="yes">All</td></tr><tr><td>Heatmap</td><td class="yes">Triangles</td><td class="yes">Every mode</td><td class="yes">Every mode</td></tr><tr><td>What If, edit receipts, snapshots and Compare</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr><tr><td>In Camera, Pixel Preview, LOD distances, overdraw, ray tracing, shadows</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr><tr><td>Reports</td><td class="yes">HTML</td><td class="yes">HTML, JSON, CSV, Markdown</td><td class="yes">All, with your name and logo</td></tr><tr><td>Command line check, JUnit and Python API</td><td class="no">No</td><td class="no">No</td><td class="yes">Yes</td></tr><tr><td>Team budget folders</td><td class="no">No</td><td class="no">No</td><td class="yes">Yes</td></tr><tr><td>Seats</td><td class="yes">Anyone</td><td class="yes">1</td><td class="yes">5, then $49 each</td></tr><tr><td>Support</td><td class="yes">Issues page</td><td class="yes">Email</td><td class="yes">Within two working days</td></tr>
+</tbody></table></div>
+<p>How seats are counted, what a purchase covers and how updates work are on the <a href="license/">Licence</a> page. Refunds have <a href="refunds/">their own page</a>.</p>
+
+</section><section id="changes"><h2><span class="no">14</span>Changes</h2>
+
+<h3 style="margin-top: 6px">1.0.0 <span class="muted" style="font-weight: 400">· December 8, 2026</span></h3>
+<p>First release.</p>
+<ul>
+<li>Engine vertex counts for Unity, Unreal (Nanite off) and glTF, live in the Sidebar and the viewport</li>
+<li>A verdict against 32 budgets (5 in Free), or limits you type in</li>
+<li>Draw calls, texture memory and texture problems for every material</li>
+<li>21 mesh checks, marked on the object and selectable in Edit Mode</li>
+<li>Where to Cut, What If, edit receipts, snapshots and Compare</li>
+<li>In Camera, Pixel Preview, LOD switch distances, overdraw, ray tracing and shadow cost</li>
+<li>Command line check with JUnit results, a Python API, team budget folders and studio branding on reports</li>
+<li>An update check that stays off until you switch it on</li>
 </ul>
-<p>The <a href="../">guide</a> covers every panel, and the editions are compared side by side <a href="../#editions">at the end of it</a>.</p>
-</section>
 
-<section id="images"><h2><span class="no">04</span>Images</h2>
-<p>The images from the store pages, each with a line of its own. Click one for the full size.</p>
-<div class="grid">
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-01-blender-says-8.jpg"><img src="thumbs/polygraph-01-blender-says-8.jpg" alt="Blender&#x27;s Statistics overlay says 8 vertices; Polygraph says Unity gets 24." loading="lazy" width="1200" height="600"></a><figcaption>Blender&#x27;s Statistics overlay says 8 vertices; Polygraph says Unity gets 24. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-01-blender-says-8.jpg">JPG, 2400 × 1200, 222 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-02-why-counts-differ.jpg"><img src="thumbs/polygraph-02-why-counts-differ.jpg" alt="Why the counts differ: every flat face keeps its own corners." loading="lazy" width="1200" height="600"></a><figcaption>Why the counts differ: every flat face keeps its own corners. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-02-why-counts-differ.jpg">JPG, 2400 × 1200, 217 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-03-budgets.jpg"><img src="thumbs/polygraph-03-budgets.jpg" alt="The 32 budgets in Pro and Studio, with where each limit comes from." loading="lazy" width="1200" height="600"></a><figcaption>The 32 budgets in Pro and Studio, with where each limit comes from. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-03-budgets.jpg">JPG, 2400 × 1200, 348 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-04-heatmap.jpg"><img src="thumbs/polygraph-04-heatmap.jpg" alt="The heatmap in four of its seven modes." loading="lazy" width="1200" height="600"></a><figcaption>The heatmap in four of its seven modes. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-04-heatmap.jpg">JPG, 2400 × 1200, 500 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-05-what-if.jpg"><img src="thumbs/polygraph-05-what-if.jpg" alt="What If: two cuts on paper take Gold&#x27;s kelp bed from 107% to 60%." loading="lazy" width="1200" height="600"></a><figcaption>What If: two cuts on paper take Gold&#x27;s kelp bed from 107% to 60%. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-05-what-if.jpg">JPG, 2400 × 1200, 278 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-06-players-view.jpg"><img src="thumbs/polygraph-06-players-view.jpg" alt="In Camera and Pixel Preview: the scene judged from the player&#x27;s seat." loading="lazy" width="1200" height="600"></a><figcaption>In Camera and Pixel Preview: the scene judged from the player&#x27;s seat. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-06-players-view.jpg">JPG, 2400 × 1200, 414 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-07-report.jpg"><img src="thumbs/polygraph-07-report.jpg" alt="The HTML report: the verdict, every limit and the heaviest objects." loading="lazy" width="1200" height="600"></a><figcaption>The HTML report: the verdict, every limit and the heaviest objects. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-07-report.jpg">JPG, 2400 × 1200, 261 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-08-pro-or-studio.jpg"><img src="thumbs/polygraph-08-pro-or-studio.jpg" alt="What Pro and Studio each add." loading="lazy" width="1200" height="600"></a><figcaption>What Pro and Studio each add. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-08-pro-or-studio.jpg">JPG, 2400 × 1200, 257 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-09-build-server.jpg"><img src="thumbs/polygraph-09-build-server.jpg" alt="Studio&#x27;s command line check, with exit codes and JUnit results." loading="lazy" width="1200" height="600"></a><figcaption>Studio&#x27;s command line check, with exit codes and JUnit results. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-09-build-server.jpg">JPG, 2400 × 1200, 305 KB</a></figcaption></figure>
-</div>
-<p class="credit">Scene: Gold, Blender Studio, CC-BY 4.0</p>
-</section>
+</section><section id="help"><h2><span class="no">15</span>Help</h2>
 
-<section id="screens"><h2><span class="no">05</span>Screenshots</h2>
-<p>Whole Blender 5.3 windows, as they came out of the capture, with no labels added.</p>
-<div class="grid">
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-cube-8-vs-24.png"><img src="thumbs/polygraph-cube-8-vs-24.jpg" alt="The default cube: 8 vertices in Blender, 24 in glTF." loading="lazy" width="1200" height="675"></a><figcaption>The default cube: 8 vertices in Blender, 24 in glTF. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-cube-8-vs-24.png">PNG, 2560 × 1440, 390 KB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-verdict-over-budget.png"><img src="thumbs/polygraph-verdict-over-budget.jpg" alt="Gold&#x27;s kelp bed judged against the Mobile game budget." loading="lazy" width="1200" height="675"></a><figcaption>Gold&#x27;s kelp bed judged against the Mobile game budget. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-verdict-over-budget.png">PNG, 2560 × 1440, 1.2 MB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-heatmap-triangles.png"><img src="thumbs/polygraph-heatmap-triangles.jpg" alt="The triangle heatmap on Gold&#x27;s ballan wrasse." loading="lazy" width="1200" height="675"></a><figcaption>The triangle heatmap on Gold&#x27;s ballan wrasse. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-heatmap-triangles.png">PNG, 2560 × 1440, 2.6 MB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-what-if.png"><img src="thumbs/polygraph-what-if.jpg" alt="What If, with two assumptions taken." loading="lazy" width="1200" height="675"></a><figcaption>What If, with two assumptions taken. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-what-if.png">PNG, 2560 × 1440, 1.2 MB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-pixel-preview.png"><img src="thumbs/polygraph-pixel-preview.jpg" alt="Pixel Preview: a sponge at the size the player will see it." loading="lazy" width="1200" height="675"></a><figcaption>Pixel Preview: a sponge at the size the player will see it. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-pixel-preview.png">PNG, 2560 × 1440, 2.6 MB</a></figcaption></figure>
-<figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-mesh-checks.png"><img src="thumbs/polygraph-mesh-checks.jpg" alt="The Checks panel with faults marked on the fish." loading="lazy" width="1200" height="675"></a><figcaption>The Checks panel with faults marked on the fish. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-mesh-checks.png">PNG, 2560 × 1440, 2.5 MB</a></figcaption></figure>
-</div>
-<p class="credit">Every screenshot except the cube shows Gold by Blender Studio. Please credit it as: Scene: Gold, Blender Studio, CC-BY 4.0</p>
-</section>
+<p>Found a bug or a wrong figure? Open an issue on the <a href="https://github.com/atahangatz/polygraph/issues">Issues page</a> with your Blender version, your system and a screenshot of the Polygraph tab. Pro and Studio customers can also write to <a href="mailto:support@duckinitiative.com">support@duckinitiative.com</a>, and Studio questions are answered within two working days.</p>
+<p>Refunds are on the <a href="refunds/">Refunds</a> page.</p>
 
-<section id="clips"><h2><span class="no">06</span>Video and clips</h2>
-<video controls preload="none" poster="thumbs/polygraph-trailer-poster.jpg" width="1920" height="1080"><source src="clips/polygraph-trailer-preview.mp4" type="video/mp4"></video>
-<p class="credit"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-trailer.mp4">The Polygraph trailer, MP4, 1920 × 1080, 84 seconds, 51.6 MB</a>. Music: "Synthwave Retro Pop 80s" by MondaMusic, under the Pixabay Content License. Every shot of Blender is a real recording of Polygraph on the free demo scene.</p>
-<p>Eleven short loops, one feature each. They play here when you scroll to them; download the MP4 for a video or the GIF for a page that only takes images.</p>
-<div class="grid">
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-01-engine-vertex-count.jpg" width="1280" height="720"><source src="clips/polygraph-01-engine-vertex-count.mp4" type="video/mp4"></video><figcaption><b>The count your engine sees.</b> Blender says 8. glTF loads 24, and Polygraph says why. <a class="get" href="clips/polygraph-01-engine-vertex-count.mp4" download>MP4, 1280 × 720, 1.6 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-01-engine-vertex-count.gif">GIF, 1280 × 720, 2.0 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-02-engine-targets.jpg" width="1280" height="720"><source src="clips/polygraph-02-engine-targets.mp4" type="video/mp4"></video><figcaption><b>Unity, Unreal or glTF.</b> Pick the engine. Every count follows its import rules. <a class="get" href="clips/polygraph-02-engine-targets.mp4" download>MP4, 1280 × 720, 1.7 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-02-engine-targets.gif">GIF, 1280 × 720, 1.4 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-03-budgets.jpg" width="1280" height="720"><source src="clips/polygraph-03-budgets.mp4" type="video/mp4"></video><figcaption><b>32 budgets.</b> Quest, VRChat, Roblox, visionOS and more, each with its source. <a class="get" href="clips/polygraph-03-budgets.mp4" download>MP4, 1280 × 720, 2.1 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-03-budgets.gif">GIF, 1280 × 720, 2.1 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-04-fix-it-live.jpg" width="1280" height="720"><source src="clips/polygraph-04-fix-it-live.mp4" type="video/mp4"></video><figcaption><b>Fix it live.</b> Lower one modifier and the verdict turns. <a class="get" href="clips/polygraph-04-fix-it-live.mp4" download>MP4, 1280 × 720, 1.8 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-04-fix-it-live.gif">GIF, 1280 × 720, 1.2 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-05-where-to-cut.jpg" width="1280" height="720"><source src="clips/polygraph-05-where-to-cut.mp4" type="video/mp4"></video><figcaption><b>Where to Cut.</b> Every change worth making, with its cause and its saving. <a class="get" href="clips/polygraph-05-where-to-cut.mp4" download>MP4, 1280 × 720, 2.3 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-05-where-to-cut.gif">GIF, 1280 × 720, 1.9 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-06-heatmap.jpg" width="1280" height="720"><source src="clips/polygraph-06-heatmap.mp4" type="video/mp4"></video><figcaption><b>Heatmap.</b> Every object coloured by what it costs. Nothing in the file changes. <a class="get" href="clips/polygraph-06-heatmap.mp4" download>MP4, 1280 × 720, 3.1 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-06-heatmap.gif">GIF, 960 × 540, 4.7 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-07-mesh-checks.jpg" width="1280" height="720"><source src="clips/polygraph-07-mesh-checks.mp4" type="video/mp4"></video><figcaption><b>Mesh checks.</b> Add a cylinder and its n-gon caps are flagged before you export. <a class="get" href="clips/polygraph-07-mesh-checks.mp4" download>MP4, 1280 × 720, 2.2 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-07-mesh-checks.gif">GIF, 1280 × 720, 3.0 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-08-in-camera.jpg" width="1280" height="720"><source src="clips/polygraph-08-in-camera.mp4" type="video/mp4"></video><figcaption><b>In Camera.</b> Judge only what the camera sees, and find what it never does. <a class="get" href="clips/polygraph-08-in-camera.mp4" download>MP4, 1280 × 720, 3.1 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-08-in-camera.gif">GIF, 960 × 540, 4.2 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-09-what-if.jpg" width="1280" height="720"><source src="clips/polygraph-09-what-if.mp4" type="video/mp4"></video><figcaption><b>What If.</b> Try a cut on paper before you touch a mesh. <a class="get" href="clips/polygraph-09-what-if.mp4" download>MP4, 1280 × 720, 2.2 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-09-what-if.gif">GIF, 1280 × 720, 1.4 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-10-pixel-preview.jpg" width="1280" height="720"><source src="clips/polygraph-10-pixel-preview.mp4" type="video/mp4"></video><figcaption><b>Pixel Preview.</b> See how many pixels a model really gets on the player's screen. <a class="get" href="clips/polygraph-10-pixel-preview.mp4" download>MP4, 1280 × 720, 2.6 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-10-pixel-preview.gif">GIF, 1280 × 720, 3.4 MB</a></figcaption></figure>
-<figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-11-edit-receipts.jpg" width="1280" height="720"><source src="clips/polygraph-11-edit-receipts.mp4" type="video/mp4"></video><figcaption><b>Edit receipts.</b> Every edit, priced in triangles the moment you make it. <a class="get" href="clips/polygraph-11-edit-receipts.mp4" download>MP4, 1280 × 720, 2.6 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-11-edit-receipts.gif">GIF, 1280 × 720, 2.4 MB</a></figcaption></figure>
+</section>
+</main>
 </div>
+<footer><div class="in"><nav class="links" aria-label="Site"><a href="./">Guide</a><a href="license/">Licence</a><a href="refunds/">Refunds</a><a href="mailto:support@duckinitiative.com">support@duckinitiative.com</a></nav>Polygraph is made by Waddle by Duck Initiative. Blender is a trademark of the Blender Foundation; Polygraph is not made by or affiliated with it.</div></footer>
 <script>
 (function () {
   var vids = Array.prototype.slice.call(document.querySelectorAll("video.loop"));
@@ -334,39 +519,4 @@ video { display: block; width: 100%; height: auto; border-radius: 10px; border: 
   }
 })();
 </script>
-</section>
-
-<section id="logos"><h2><span class="no">07</span>Logos</h2>
-<p>Two lines that settle: a polygraph needle jumps when something is off and goes still when the answer is true. Use the dark versions on dark grounds and the light ones on white. Please don't recolour, stretch or redraw it. The <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-usage.pdf">usage sheet</a> (PDF, 89 KB) has clear space and the smallest sizes.</p>
-<div class="grid">
-<figure class="logo-tile dark"><div class="plate"><img src="logos/polygraph-logo-dark.svg" alt="Logo, for dark grounds" loading="lazy"></div><figcaption><b>Logo, for dark grounds</b><span><a href="logos/polygraph-logo-dark.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-logo-dark-2560.png">PNG, 2560 px</a></span></figcaption></figure>
-<figure class="logo-tile light"><div class="plate"><img src="logos/polygraph-logo-light.svg" alt="Logo, for light grounds" loading="lazy"></div><figcaption><b>Logo, for light grounds</b><span><a href="logos/polygraph-logo-light.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-logo-light-2560.png">PNG, 2560 px</a></span></figcaption></figure>
-<figure class="logo-tile dark"><div class="plate"><img src="logos/polygraph-logo-stacked-dark.svg" alt="Stacked, for dark grounds" loading="lazy"></div><figcaption><b>Stacked, for dark grounds</b><span><a href="logos/polygraph-logo-stacked-dark.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-logo-stacked-dark-1920.png">PNG, 1920 px</a></span></figcaption></figure>
-<figure class="logo-tile light"><div class="plate"><img src="logos/polygraph-logo-stacked-light.svg" alt="Stacked, for light grounds" loading="lazy"></div><figcaption><b>Stacked, for light grounds</b><span><a href="logos/polygraph-logo-stacked-light.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-logo-stacked-light-1920.png">PNG, 1920 px</a></span></figcaption></figure>
-<figure class="logo-tile dark"><div class="plate"><img src="logos/polygraph-mark-dark.svg" alt="Mark, for dark grounds" loading="lazy"></div><figcaption><b>Mark, for dark grounds</b><span><a href="logos/polygraph-mark-dark.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-mark-dark-1024.png">PNG, 1024 px</a></span></figcaption></figure>
-<figure class="logo-tile light"><div class="plate"><img src="logos/polygraph-mark-light.svg" alt="Mark, for light grounds" loading="lazy"></div><figcaption><b>Mark, for light grounds</b><span><a href="logos/polygraph-mark-light.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-mark-light-1024.png">PNG, 1024 px</a></span></figcaption></figure>
-<figure class="logo-tile photo"><div class="plate"><img src="logos/polygraph-logo-white.svg" alt="One colour, white" loading="lazy"></div><figcaption><b>One colour, white</b><span><a href="logos/polygraph-logo-white.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-logo-white-2560.png">PNG, 2560 px</a></span></figcaption></figure>
-<figure class="logo-tile light"><div class="plate"><img src="logos/polygraph-logo-black.svg" alt="One colour, black" loading="lazy"></div><figcaption><b>One colour, black</b><span><a href="logos/polygraph-logo-black.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-logo-black-2560.png">PNG, 2560 px</a></span></figcaption></figure>
-</div>
-<p>The app icon, as Polygraph shows it in Blender and on the stores: <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-app-icon-1024.png">PNG, 1024 px</a>.</p>
-</section>
-
-<section id="copies"><h2><span class="no">08</span>Review copies</h2>
-<p>If you write about Blender or make videos about it, we'll send you Pro or Studio for free, no strings attached. Write to <a href="mailto:hello@duckinitiative.com">hello@duckinitiative.com</a> with a link to your channel or site.</p>
-<p>To try it in two minutes, there's a free demo scene: a small harbour with a budget that's broken, a fix that's one click away, and a shed the camera never sees. <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-demo-1.0.zip">polygraph-demo-1.0.zip</a> (1.7 MB, CC0, opens in Blender 4.2 to 5.3).</p>
-</section>
-
-<section id="maker"><h2><span class="no">09</span>Who makes it</h2>
-<div class="studio"><img src="thumbs/duck-initiative-logo.jpg" alt="The Duck Initiative logo: a white duck diving into dark water, orange feet up" width="112" height="112" loading="lazy">
-<div><p style="margin-top:0">Waddle is the label Duck Initiative puts its Blender add-ons out under. Polygraph is the first of them. It exists because the vertex count Blender shows and the one a game engine loads are often far apart, and Blender doesn&#x27;t say so.</p>
-<p>Studio logo: <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/duck-initiative-logo-2048.png">PNG, 2048 px</a>.</p></div></div>
-</section>
-
-<section id="use"><h2><span class="no">10</span>Using this material</h2>
-<p>You're welcome to use the name, the logo, the images, the clips and the text on this page to talk about Polygraph: in reviews, tutorials, videos, thumbnails and articles. What you can't do is use them as the name or logo of your own product, or in a way that suggests we made or endorse something we didn't. The <a href="../license/#name">licence page</a> has the full wording.</p>
-<p>Blender is a trademark of the Blender Foundation. Polygraph is not made by or affiliated with it.</p>
-</section>
-</main>
-</div>
-<footer><div class="in"><nav class="links" aria-label="Site"><a href="../">Guide</a><a href="../license/">Licence</a><a href="../refunds/">Refunds</a><a href="./">Press</a><a href="mailto:support@duckinitiative.com">support@duckinitiative.com</a></nav>Polygraph is made by Waddle by Duck Initiative. Blender is a trademark of the Blender Foundation; Polygraph is not made by or affiliated with it.</div></footer>
 </html>
