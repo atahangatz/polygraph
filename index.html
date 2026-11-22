@@ -69,7 +69,9 @@ nav.index li { counter-increment: n; }
 nav.index a { display: flex; gap: 10px; padding: 3px 0; color: var(--ink-2); text-decoration: none; font-size: 14px; }
 nav.index a::before { content: counter(n, decimal-leading-zero); font: 12px/1.9 var(--mono); color: var(--ruling); opacity: 0.7; }
 nav.index a:hover { color: var(--ink); }
-main { min-width: 0; max-width: 760px; }
+main { min-width: 0; }
+/* text keeps its 760px measure; the trailer and the clips take the whole column */
+:where(main) > :where(:not(section, .film)), :where(section) > :where(:not(.loops)) { max-width: 760px; }
 section { padding-top: 8px; margin-bottom: 52px; scroll-margin-top: 20px; }
 h2 { font-size: 28px; letter-spacing: -0.012em; line-height: 1.2; margin: 0 0 14px; font-weight: 600; text-wrap: balance;
   display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
@@ -172,12 +174,13 @@ footer .links a:hover { text-decoration: underline; }
 .film { margin: 0 0 34px; }
 .film video { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--edge); background: #120A2E; }
 .film figcaption { font: 13px/1.6 var(--mono); color: var(--ink-2); margin-top: 8px; }
-.loops { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 22px 0 6px; }
-.loops.one { grid-template-columns: minmax(0, 1fr); }
+.loops { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; margin: 26px 0 8px; }
 .loops figure { margin: 0; }
-.loops video { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--edge); background: #120A2E; }
-.loops figcaption { font-size: 14px; color: var(--ink-2); margin-top: 6px; line-height: 1.45; }
-@media (max-width: 720px) { .loops { grid-template-columns: minmax(0, 1fr); } }
+.loops video { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--edge); background: #120A2E; cursor: zoom-in; }
+.loops video:fullscreen { border: 0; border-radius: 0; cursor: zoom-out; }
+.loops figcaption { font-size: 15px; color: var(--ink-2); margin-top: 8px; line-height: 1.45; max-width: 68ch; }
+/* on wide screens the footage runs on into the right margin, up to 200px, so the Blender panels stay readable */
+.film, .loops { margin-right: calc(-1 * clamp(0px, (100vw - 1160px) / 2 - 24px, 200px)); }
 </style>
 <header class="masthead"><div class="in">
 <div class="eyebrow">Blender add-on · Guide</div>
@@ -240,7 +243,7 @@ footer .links a:hover { text-decoration: underline; }
 </dl>
 <p>Two preferences put Polygraph elsewhere too: <b>Total in the Viewport Header</b> shows the scene's triangles in the 3D Viewport's header, and <b>Panel in Scene Properties</b> repeats the panels in the Scene tab of the Properties editor.</p>
 
-<div class="loops one"><figure><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-06-heatmap.jpg" width="1280" height="720"><source src="polygraph-06-heatmap.mp4" type="video/mp4"></video><figcaption>Heatmap. Every object coloured by what it costs. Nothing in the file changes.</figcaption></figure></div>
+<div class="loops one"><figure><video class="loop" muted loop playsinline preload="none" poster="polygraph-06-heatmap.jpg" width="1280" height="720"><source src="polygraph-06-heatmap.mp4" type="video/mp4"></video><figcaption>Heatmap. Every object coloured by what it costs. Nothing in the file changes.</figcaption></figure></div>
 </section><section id="engine-counts"><h2><span class="no">04</span>Engine counts</h2>
 
 <p>Blender stores one vertex for each corner position. A game engine needs one for every different normal, UV and colour that meets at a corner, so it splits vertices along UV seams, sharp edges and flat-shaded faces. The default cube is 8 vertices in Blender and 24 in any engine.</p>
@@ -390,7 +393,7 @@ footer .links a:hover { text-decoration: underline; }
 <dt>Heatmap</dt><dd>Colours every object by triangles. Pro adds share of the scene, budget, triangle density, pixels per triangle, overdraw, and triangles per camera pixel, where objects the camera never sees are hottest.</dd>
 <dt>Measured</dt><dd>LOD switch distances, overdraw, an estimate of ray tracing cost and the cost of shadows, each measured from the scene rather than guessed.</dd>
 </dl>
-<div class="loops"><figure><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-08-in-camera.jpg" width="1280" height="720"><source src="polygraph-08-in-camera.mp4" type="video/mp4"></video><figcaption>In Camera. Judge only what the camera sees, and find what it never does.</figcaption></figure><figure><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-10-pixel-preview.jpg" width="1280" height="720"><source src="polygraph-10-pixel-preview.mp4" type="video/mp4"></video><figcaption>Pixel Preview. See how many pixels a model really gets on the player's screen.</figcaption></figure></div>
+<div class="loops"><figure><video class="loop" muted loop playsinline preload="none" poster="thumbs/polygraph-08-in-camera.jpg" width="1280" height="720"><source src="polygraph-08-in-camera.mp4" type="video/mp4"></video><figcaption>In Camera. Judge only what the camera sees, and find what it never does.</figcaption></figure><figure><video class="loop" muted loop playsinline preload="none" poster="polygraph-10-pixel-preview.jpg" width="1280" height="720"><source src="polygraph-10-pixel-preview.mp4" type="video/mp4"></video><figcaption>Pixel Preview. See how many pixels a model really gets on the player's screen.</figcaption></figure></div>
 </section><section id="reports"><h2><span class="no">09</span>Reports and snapshots</h2>
 
 <p><b>Export Report</b> writes an HTML report you can send to anyone: the verdict, every limit, the heaviest objects, the textures and Where to Cut. <span class="tag pro">Pro</span> adds JSON, CSV and Markdown, and <span class="tag studio">Studio</span> puts your studio's name and logo on it.</p>
@@ -517,6 +520,16 @@ if result["budget"]["state"] == "OVER":
   if (still && still.addEventListener) {
     still.addEventListener("change", function () { if (io) io.disconnect(); io = setup(); });
   }
+  // a click opens the clip full screen, to read the panel up close; a second click or Esc comes back
+  vids.forEach(function (v) {
+    v.addEventListener("click", function () {
+      if (v.controls) return;
+      if (document.fullscreenElement) { document.exitFullscreen(); return; }
+      if (v.requestFullscreen) { var p = v.requestFullscreen(); if (p && p.catch) p.catch(function () {}); }
+      else if (v.webkitEnterFullscreen) { v.webkitEnterFullscreen(); }
+      play(v);
+    });
+  });
 })();
 </script>
 </html>
