@@ -1,8 +1,8 @@
 # Polygraph guide and update file
 
-This repository holds Polygraph's guide, served at https://atahangatz.github.io/polygraph/, and `version.json`, the file Polygraph's update check reads. `editions/` only forwards to the guide's Editions section, which the add-on's report links to.
+This repository holds Polygraph's guide, served at https://duckinitiative.com/polygraph/, and `version.json`, the file Polygraph's update check reads. `editions/` only forwards to the guide's Editions section, which the add-on's report links to.
 
-Polygraph is a scene statistics add-on for Blender. The copies sold outside extensions.blender.org (Free from the store, Pro and Studio) can look here once a day to see whether a newer version is out, but only if the user turns on Check for Updates in Polygraph's preferences and Blender is allowed online. They read `https://atahangatz.github.io/polygraph/version.json` and send nothing but the request for it. The copy on extensions.blender.org has no update check, because Blender updates it itself.
+Polygraph is a scene statistics add-on for Blender, made by Waddle by Duck Initiative. The copies sold outside extensions.blender.org (Free from the store, Pro and Studio) can look here once a day to see whether a newer version is out, but only if the user turns on Check for Updates in Polygraph's preferences and Blender is allowed online. They read `https://duckinitiative.com/polygraph/version.json` and send nothing but the request for it. Copies that still ask the old address, `https://atahangatz.github.io/polygraph/version.json`, are forwarded to the same file. The copy on extensions.blender.org has no update check, because Blender updates it itself.
 
 ## Releasing a new version
 
