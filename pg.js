@@ -6,6 +6,23 @@
   function all(sel, root) { return Array.prototype.slice.call((root || doc).querySelectorAll(sel)); }
   function make(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
+  /* ---------- launch: Tuesday, December 8, 2026 at 18:00 Istanbul time (15:00 UTC) ----------
+     The same moment and rules as /assets/js/launch.js on the main site, so change both together.
+     Before launch a store link leads to the email sign-up under "Polygraph comes out on December 8" on the home page.
+     Superhive publishes by itself at 9am Central and its buttons wait ten more minutes. Blender Extensions goes
+     live when its review passes: set EXTENSIONS_LIVE to true once https://extensions.blender.org/add-ons/polygraph/
+     opens for everyone. After launch a store that isn't open yet loses its button; the Gumroad one beside it stays. */
+  var LAUNCH = Date.UTC(2026, 11, 8, 15), SUPERHIVE_OPENS = LAUNCH + 10 * 60 * 1000, EXTENSIONS_LIVE = false;
+  var now = Date.now(), launched = now >= LAUNCH;
+  all('a[href*="gumroad.com/l/"], a[href*="superhivemarket.com/products/"], a[href*="extensions.blender.org/add-ons/"]').forEach(function (a) {
+    var h = a.href;
+    var open = h.indexOf('extensions.blender.org') > -1 ? launched && EXTENSIONS_LIVE : h.indexOf('superhivemarket.com') > -1 ? now >= SUPERHIVE_OPENS : launched;
+    if (open) return;
+    if (launched) { a.style.display = 'none'; return; }
+    a.setAttribute('href', '/#news');
+    a.title = 'On sale from December 8. Leave your email and we\'ll tell you the moment it is out.';
+  });
+
   /* Opened straight from a folder (file://) a link to "license/" shows a file listing, not the page.
      Point such links at the index.html inside. On the web the addresses stay clean. */
   if (location.protocol === 'file:') {
