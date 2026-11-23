@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Polygraph Press Kit</title>
 <meta name="description" content="Facts, screenshots, clips and logos for writing about Polygraph, the Blender add-on that shows the vertex count your engine sees.">
+<link rel="canonical" href="https://duckinitiative.com/polygraph/press/">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -19,196 +21,22 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The Polygraph logo on purple paper: Polycount and budgets for Blender">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<style>
-:root {
-  --bg: #F6F4FB; --surface: #FFFFFF; --sunk: #EEEAF8; --edge: #D5CDEF; --ink: #241A40; --ink-2: #51476F;
-  --ruling: #6B57C9; --pen: #457F13; --near: #AB5C18; --over: #DB2150; --grid: rgba(107, 87, 201, 0.10);
-  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
-}
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #1C1533; --surface: #241A40; --sunk: #2B2050; --edge: #4A3B82; --ink: #ECE9F5; --ink-2: #BDB5D8;
-  --ruling: #9D8CF0; --pen: #99FF42; --near: #FF8A24; --over: #FF3D6E; --grid: rgba(157, 140, 240, 0.09); color-scheme: dark; } }
-:root[data-theme="dark"] {
-  --bg: #1C1533; --surface: #241A40; --sunk: #2B2050; --edge: #4A3B82; --ink: #ECE9F5; --ink-2: #BDB5D8;
-  --ruling: #9D8CF0; --pen: #99FF42; --near: #FF8A24; --over: #FF3D6E; --grid: rgba(157, 140, 240, 0.09); color-scheme: dark; }
-
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.62 var(--sans); -webkit-font-smoothing: antialiased; }
-a { color: var(--ruling); text-underline-offset: 2px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; border-radius: 3px; }
-code, kbd, pre { font-family: var(--mono); font-size: 0.88em; }
-code { background: var(--sunk); padding: 1px 5px; border-radius: 4px; }
-kbd { border: 1px solid var(--edge); border-bottom-width: 2px; padding: 0 5px; border-radius: 4px; background: var(--surface); }
-pre { background: var(--sunk); border: 1px solid var(--edge); border-radius: 8px; padding: 14px 16px; overflow-x: auto; line-height: 1.5; }
-pre code { background: none; padding: 0; }
-
-.masthead {
-  background-color: var(--surface);
-  background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-  background-size: 24px 24px; border-bottom: 1px solid var(--edge);
-  margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px);
-}
-.masthead .in { max-width: 1160px; margin: 0 auto; padding-block: 44px 36px;
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: 0.09em; text-transform: uppercase; color: var(--ruling); }
-h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.02; letter-spacing: -0.02em; margin: 14px 0 10px; font-weight: 600; }
-h1 .logo { display: block; height: clamp(38px, 6.4vw, 58px); width: auto; margin: 22px 0 18px; }
-.lede { font-size: 19px; color: var(--ink-2); margin: 0; max-width: 40em; text-wrap: balance; }
-.meta { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 6px 18px; font: 13px/1.4 var(--mono); color: var(--ink-2); }
-.meta b { color: var(--ink); font-weight: 500; }
-.trace { display: block; margin-top: 26px; width: 100%; max-width: 520px; height: 40px; }
-
-.wrap { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px;
-  padding-block: 36px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-nav.index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; }
-nav.index ol { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: n; }
-nav.index li { counter-increment: n; }
-nav.index a { display: flex; gap: 10px; padding: 3px 0; color: var(--ink-2); text-decoration: none; font-size: 14px; }
-nav.index a::before { content: counter(n, decimal-leading-zero); font: 12px/1.9 var(--mono); color: var(--ruling); opacity: 0.7; }
-nav.index a:hover { color: var(--ink); }
-main { min-width: 0; max-width: 760px; }
-section { padding-top: 8px; margin-bottom: 52px; scroll-margin-top: 20px; }
-h2 { font-size: 28px; letter-spacing: -0.012em; line-height: 1.2; margin: 0 0 14px; font-weight: 600; text-wrap: balance;
-  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-h2 .no { font: 500 13px var(--mono); color: var(--ruling); }
-h3 { font-size: 18px; margin: 28px 0 8px; font-weight: 600; }
-p, li { max-width: 68ch; }
-.muted { color: var(--ink-2); }
-ol.steps { padding-left: 0; list-style: none; counter-reset: s; }
-ol.steps li { counter-increment: s; position: relative; padding-left: 40px; margin: 8px 0; }
-ol.steps li::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 50%;
-  border: 1.5px solid var(--ruling); color: var(--ruling); font: 500 13px/23px var(--mono); text-align: center; }
-.aside { border-left: 3px solid var(--near); background: var(--sunk); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 18px 0; }
-.aside p { margin: 0; }
-
-.tag { display: inline-block; font: 500 10.5px/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 6px 3px;
-  border-radius: 4px; border: 1px solid currentColor; vertical-align: 2px; margin-left: 6px; white-space: nowrap; }
-.tag.pro { color: var(--ruling); }
-.tag.studio { color: var(--pen); }
-.tag.free { color: var(--ink-2); }
-.tag.note { color: var(--ink-2); margin-left: 0; }
-.tag.fault { color: var(--over); margin-left: 0; }
-
-dl.panels { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 20px; margin: 16px 0; }
-dl.panels dt { font-weight: 600; }
-dl.panels dd { margin: 0; color: var(--ink-2); }
-
-.verdicts { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
-.verdict { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid var(--edge); border-radius: 8px;
-  background: var(--surface); font-size: 14px; }
-.verdict i { width: 34px; height: 6px; border-radius: 3px; display: inline-block; }
-
-.tablewrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--edge); border-radius: 10px; background: var(--surface); }
-table { border-collapse: collapse; width: 100%; font-size: 14px; }
-th { text-align: left; font: 500 11px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ruling);
-  padding: 12px 14px; border-bottom: 1px solid var(--edge); white-space: nowrap; }
-td { padding: 11px 14px; border-bottom: 1px solid var(--edge); vertical-align: top; }
-tr:last-child td { border-bottom: 0; }
-td.limits { font: 13px/1.6 var(--mono); font-variant-numeric: tabular-nums; min-width: 190px; }
-.limline { display: grid; grid-template-columns: 5.6em minmax(0, 1fr); column-gap: 10px; align-items: baseline; }
-.limline + .limline { margin-top: 6px; }
-.lim { color: var(--ink-2); font: 12px/1.6 var(--sans); }
-.q { white-space: nowrap; }
-.words { font: 13px/1.6 var(--sans); color: var(--ink-2); }
-.bname { font-weight: 600; }
-.bnote { display: block; color: var(--ink-2); font-size: 13px; margin-top: 3px; max-width: 46ch; }
-td.src { font-size: 13px; white-space: nowrap; }
-.checked { display: block; font: 12px var(--mono); color: var(--ink-2); }
-.cname { font-weight: 600; white-space: nowrap; }
-table.compact td, table.compact th { padding: 9px 12px; }
-td.yes { color: var(--pen); font-family: var(--mono); }
-td.no { color: var(--ink-2); font-family: var(--mono); }
-
-.editions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
-.ed { border: 1px solid var(--edge); border-radius: 10px; padding: 18px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
-.ed h3 { margin: 0; font-size: 20px; }
-.ed p { margin: 0; color: var(--ink-2); font-size: 14px; }
-.ed .where { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
-.btn { display: inline-block; padding: 7px 12px; border-radius: 7px; border: 1px solid var(--ruling); color: var(--ink); text-decoration: none;
-  font-size: 14px; font-weight: 500; }
-.btn:hover { background: var(--sunk); }
-
-footer { border-top: 1px solid var(--edge); }
-footer .in { max-width: 1160px; margin: 0 auto; padding-block: 24px 40px; font: 13px/1.6 var(--mono); color: var(--ink-2);
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-
-.home { display: inline-block; margin-bottom: 18px; }
-.home .logo { display: block; height: 26px; width: auto; }
-.meta a { color: inherit; }
-ul.short { list-style: none; padding: 0; margin: 16px 0; border: 1px solid var(--edge); border-radius: 10px; background: var(--surface); max-width: 68ch; }
-ul.short li { position: relative; padding: 11px 16px 11px 42px; border-bottom: 1px solid var(--edge); max-width: none; }
-ul.short li:last-child { border-bottom: 0; }
-ul.short li::before { content: ""; position: absolute; left: 16px; top: 23px; width: 14px; height: 2.5px; border-radius: 2px; background: var(--pen); }
-ul.short.not li::before { background: var(--over); }
-footer .links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-bottom: 10px; }
-footer .links a { color: var(--ink); text-decoration: none; }
-footer .links a:hover { text-decoration: underline; }
-
-@media (max-width: 860px) {
-  .wrap { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  nav.index { position: static; }
-  nav.index ol { display: flex; flex-wrap: wrap; gap: 4px 14px; }
-  nav.index a::before { display: none; }
-  .editions { grid-template-columns: minmax(0, 1fr); }
-  dl.panels { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-  dl.panels dd { margin-bottom: 10px; }
-}
-@media (max-width: 560px) {
-  table.budgets thead { display: none; }
-  table.budgets tr { display: block; padding: 14px; border-bottom: 1px solid var(--edge); }
-  table.budgets tr:last-child { border-bottom: 0; }
-  table.budgets td { display: block; padding: 0; border: 0; }
-  table.budgets td + td { margin-top: 10px; }
-  table.budgets td.limits { min-width: 0; }
-  table.budgets td.src { white-space: normal; }
-  table.budgets .bnote { max-width: none; }
-  .limline { grid-template-columns: minmax(0, 1fr); }
-}
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-
-.kit { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 24px; }
-.btn.main { background: var(--ink); color: var(--surface); border-color: var(--ink); padding: 10px 16px; }
-.btn.main:hover { background: var(--ink-2); border-color: var(--ink-2); }
-.kit .note { font: 13px/1.4 var(--mono); color: var(--ink-2); }
-blockquote.copy { margin: 14px 0; padding: 14px 18px; border-left: 3px solid var(--pen); background: var(--surface);
-  border-radius: 0 8px 8px 0; max-width: 68ch; font-size: 17px; }
-blockquote.copy p { margin: 0; }
-.copy-label { font: 500 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ruling); margin: 22px 0 0; }
-table.facts { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--edge); border-radius: 10px; overflow: hidden; }
-table.facts th { text-align: left; font: 500 12px/1.6 var(--mono); letter-spacing: 0.04em; color: var(--ink-2); text-transform: none;
-  padding: 11px 14px; border-bottom: 1px solid var(--edge); width: 9.5em; vertical-align: top; white-space: normal; }
-table.facts td { padding: 11px 14px; border-bottom: 1px solid var(--edge); }
-table.facts tr:last-child th, table.facts tr:last-child td { border-bottom: 0; }
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 18px 0; }
-.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-figure { margin: 0; }
-figure.clip video { border-radius: 8px; border: 1px solid var(--edge); }
-figure.shot img, figure.clip img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--edge); background: var(--sunk); }
-figcaption { font-size: 14px; color: var(--ink-2); margin-top: 8px; line-height: 1.5; }
-figcaption .get { display: block; font: 12px/1.6 var(--mono); margin-top: 2px; }
-video { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--edge); background: #000; }
-.logo-tile .plate { height: 150px; border-radius: 10px; border: 1px solid var(--edge); display: grid; place-items: center; padding: 22px; }
-.logo-tile.dark .plate { background: #241A40; border-color: #241A40; }
-.logo-tile.light .plate { background: #FFFFFF; }
-.logo-tile.photo .plate { background: #51476F; border-color: #51476F; }
-.logo-tile .plate img { max-width: 100%; max-height: 74px; width: auto; height: auto; }
-.logo-tile figcaption b { display: block; color: var(--ink); font-weight: 600; }
-.logo-tile figcaption span { font: 12px/1.6 var(--mono); }
-.studio { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 18px; align-items: start; }
-.studio img { width: 112px; height: 112px; border-radius: 10px; display: block; }
-.credit { font: 12px/1.6 var(--mono); color: var(--ink-2); }
-@media (max-width: 860px) { .grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) {
-  .grid, .grid.three { grid-template-columns: minmax(0, 1fr); }
-  table.facts th, table.facts td { display: block; width: auto; }
-  table.facts th { border-bottom: 0; padding-bottom: 0; }
-  .studio { grid-template-columns: minmax(0, 1fr); }
-}
-</style>
-<header class="masthead"><div class="in">
+<meta name="color-scheme" content="dark">
+<link rel="preload" href="../fonts/archivo-black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/plex-mono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../pg.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://duckinitiative.com/polygraph/press/#page","url":"https://duckinitiative.com/polygraph/press/","name":"Polygraph Press Kit","description":"Facts, screenshots, clips and logos for writing about Polygraph, the Blender add-on that shows the vertex count your engine sees.","isPartOf":{"@id":"https://duckinitiative.com/#site"},"publisher":{"@id":"https://duckinitiative.com/#org"},"about":{"@id":"https://duckinitiative.com/polygraph/#software"},"inLanguage":"en","@type":"WebPage"},{"@type":"Organization","@id":"https://duckinitiative.com/#org","name":"Duck Initiative","url":"https://duckinitiative.com/","logo":{"@type":"ImageObject","url":"https://duckinitiative.com/img/duck-512.png","width":512,"height":512},"description":"A small studio making add-ons for Blender. Its add-ons are sold under the label Waddle by Duck Initiative.","email":"hello@duckinitiative.com","brand":{"@type":"Brand","@id":"https://duckinitiative.com/#waddle","name":"Waddle by Duck Initiative","url":"https://duckinitiative.com/waddle.html"},"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"support@duckinitiative.com","availableLanguage":"en"},{"@type":"ContactPoint","contactType":"press","email":"hello@duckinitiative.com","availableLanguage":"en"}],"sameAs":["https://waddlebyduck.gumroad.com/"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Duck Initiative","item":"https://duckinitiative.com/"},{"@type":"ListItem","position":2,"name":"Waddle","item":"https://duckinitiative.com/waddle.html"},{"@type":"ListItem","position":3,"name":"Blender add-ons","item":"https://duckinitiative.com/addons.html"},{"@type":"ListItem","position":4,"name":"Polygraph","item":"https://duckinitiative.com/polygraph/"},{"@type":"ListItem","position":5,"name":"Press Kit","item":"https://duckinitiative.com/polygraph/press/"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="vbar">
+<a class="vbar-home" href="../../index.html"><img src="../press/thumbs/duck-initiative-logo.jpg" alt="" width="36" height="36" decoding="async"><span>Duck Initiative</span></a>
+<nav class="vbar-crumb" aria-label="Where this page sits"><a href="../../waddle.html">Waddle</a><span aria-hidden="true">›</span><a href="../../addons.html">Add-ons</a><span aria-hidden="true">›</span><b>Polygraph</b></nav>
+<nav class="vbar-tabs" aria-label="Polygraph pages"><a href="../">Guide</a><a href="../#editions">Editions</a><a href="../license/">Licence</a><a href="../refunds/">Refunds</a><a href="../press/" aria-current="page">Press</a></nav>
+</header>
+<div class="vbars" aria-hidden="true"><i style="background:#ECEBF5"></i><i style="background:#FFE600"></i><i style="background:#19E3FF"></i><i style="background:#2BF0A0"></i><i style="background:#FF2E93"></i><i style="background:#E63F0A"></i><i style="background:#2B3BFF"></i></div>
+<div class="masthead"><div class="in">
 <a class="home" href="../" aria-label="Polygraph Guide"><svg class="logo" role="img" aria-label="Polygraph" xmlns="http://www.w3.org/2000/svg" viewBox="-4.81 -78.8 598.825 104.8"><title>Polygraph</title><path style="fill: var(--pen)" d="M0.114 -48.241Q2.495 -58.955 5.405 -63.843Q10.004 -71.569 18.172 -71.569Q23.047 -71.569 27.697 -65.984Q29.854 -63.393 34.025 -56.694Q42.43 -43.194 45.895 -43.194Q49.82 -43.194 58.134 -46.828Q69.969 -52 77.858 -52H122.215Q124.204 -52 125.609 -50.594Q127.015 -49.188 127.015 -47.2Q127.015 -45.212 125.609 -43.806Q124.204 -42.4 122.215 -42.4H77.858Q71.975 -42.4 61.978 -38.031Q51.826 -33.594 45.895 -33.594Q39.649 -33.594 33.787 -40.266Q30.896 -43.555 25.875 -51.62Q19.432 -61.969 18.172 -61.969Q15.461 -61.969 13.654 -58.933Q11.532 -55.368 9.486 -46.159Q9.054 -44.218 7.377 -43.15Q5.7 -42.083 3.759 -42.514Q1.818 -42.946 0.75 -44.623Q-0.317 -46.3 0.114 -48.241Z"/><path style="fill: var(--ink)" d="M0.114 -5.841Q2.495 -16.555 5.405 -21.443Q10.004 -29.169 18.172 -29.169Q23.047 -29.169 27.697 -23.584Q29.854 -20.993 34.025 -14.294Q42.43 -0.794 45.895 -0.794Q49.82 -0.794 58.134 -4.428Q69.969 -9.6 77.858 -9.6H122.215Q124.204 -9.6 125.609 -8.194Q127.015 -6.788 127.015 -4.8Q127.015 -2.812 125.609 -1.406Q124.204 0 122.215 0H77.858Q71.975 0 61.978 4.369Q51.826 8.806 45.895 8.806Q39.649 8.806 33.787 2.134Q30.896 -1.156 25.875 -9.22Q19.432 -19.569 18.172 -19.569Q15.461 -19.569 13.654 -16.533Q11.532 -12.968 9.486 -3.759Q9.054 -1.818 7.377 -0.75Q5.7 0.317 3.759 -0.114Q1.818 -0.546 0.75 -2.223Q-0.317 -3.9 0.114 -5.841Z"/><path style="fill: var(--ink)" d="M157.02 20V-52H167.92V-43.4H168.42Q170.02 -48.1 173.92 -50.65Q177.82 -53.2 183.02 -53.2Q189.62 -53.2 194.22 -49.95Q198.82 -46.7 201.27 -40.65Q203.72 -34.6 203.72 -26Q203.72 -17.5 201.27 -11.4Q198.82 -5.3 194.22 -2.05Q189.62 1.2 183.02 1.2Q177.82 1.2 174.02 -1.4Q170.22 -4 168.42 -8.6H167.92V20ZM179.72 -8Q185.42 -8 188.82 -11.75Q192.22 -15.5 192.22 -21.5V-30.5Q192.22 -36.5 188.82 -40.2Q185.42 -43.9 179.72 -43.9Q176.42 -43.9 173.77 -42.8Q171.12 -41.7 169.52 -39.7Q167.92 -37.7 167.92 -35V-17.4Q167.92 -14.4 169.52 -12.35Q171.12 -10.3 173.77 -9.15Q176.42 -8 179.72 -8Z M235.52 1.2Q228.22 1.2 222.87 -2.15Q217.52 -5.5 214.57 -11.6Q211.62 -17.7 211.62 -26Q211.62 -34.3 214.57 -40.4Q217.52 -46.5 222.87 -49.85Q228.22 -53.2 235.52 -53.2Q242.72 -53.2 248.07 -49.85Q253.42 -46.5 256.37 -40.4Q259.32 -34.3 259.32 -26Q259.32 -17.7 256.37 -11.6Q253.42 -5.5 248.07 -2.15Q242.72 1.2 235.52 1.2ZM235.52 -7.9Q241.12 -7.9 244.47 -11.35Q247.82 -14.8 247.82 -21.6V-30.4Q247.82 -37.2 244.47 -40.65Q241.12 -44.1 235.52 -44.1Q230.02 -44.1 226.57 -40.65Q223.12 -37.2 223.12 -30.4V-21.6Q223.12 -14.8 226.57 -11.35Q230.02 -7.9 235.52 -7.9Z M288.52 0H281.62Q276.02 0 273.22 -2.95Q270.42 -5.9 270.42 -10.9V-74H281.32V-8.9H288.52Z M318.62 -21.4 329.02 -52H339.52L317.62 10.3Q316.42 13.8 314.77 15.95Q313.12 18.1 310.57 19.05Q308.02 20 303.92 20H297.62V11.1H306.42L309.42 2.3L290.52 -52H301.42L311.82 -21.4L314.82 -10.1H315.32Z M390.62 4.9Q390.62 10.3 387.87 13.95Q385.12 17.6 379.32 19.4Q373.52 21.2 364.12 21.2Q355.72 21.2 350.47 19.7Q345.22 18.2 342.87 15.4Q340.52 12.6 340.52 8.7Q340.52 4.4 342.87 1.95Q345.22 -0.5 349.42 -1.3V-2.4Q346.52 -3.3 345.02 -5.4Q343.52 -7.5 343.52 -10.4Q343.52 -14.4 346.27 -16.55Q349.02 -18.7 352.82 -19.6V-20Q348.12 -22.2 345.67 -26.2Q343.22 -30.2 343.22 -35.4Q343.22 -40.7 345.67 -44.7Q348.12 -48.7 352.77 -50.95Q357.42 -53.2 363.92 -53.2Q366.62 -53.2 368.97 -52.8Q371.32 -52.4 373.42 -51.6V-53Q373.42 -56.5 375.12 -58.4Q376.82 -60.3 380.22 -60.3H388.12V-51.6H377.62V-49.5Q381.12 -47.1 382.97 -43.5Q384.82 -39.9 384.82 -35.4Q384.82 -30.2 382.37 -26.2Q379.92 -22.2 375.27 -20Q370.62 -17.8 364.02 -17.8Q362.12 -17.8 360.37 -18Q358.62 -18.2 357.22 -18.6Q355.32 -17.9 353.82 -16.65Q352.32 -15.4 352.32 -13.4Q352.32 -11.3 354.17 -10.4Q356.02 -9.5 359.52 -9.5H372.32Q381.92 -9.5 386.27 -5.7Q390.62 -1.9 390.62 4.9ZM380.42 6.1Q380.42 3.3 378.27 1.75Q376.12 0.2 370.82 0.2H353.22Q351.42 1.2 350.57 2.75Q349.72 4.3 349.72 6.2Q349.72 9.3 352.22 11.3Q354.72 13.3 360.82 13.3H367.62Q374.02 13.3 377.22 11.5Q380.42 9.7 380.42 6.1ZM364.02 -25.6Q368.82 -25.6 371.47 -27.8Q374.12 -30 374.12 -34.4V-36.5Q374.12 -40.9 371.47 -43.1Q368.82 -45.3 364.02 -45.3Q359.22 -45.3 356.57 -43.1Q353.92 -40.9 353.92 -36.5V-34.4Q353.92 -30 356.57 -27.8Q359.22 -25.6 364.02 -25.6Z M408.62 0H397.72V-52H408.62V-41.7H409.12Q409.92 -44.3 411.67 -46.65Q413.42 -49 416.32 -50.5Q419.22 -52 423.42 -52H426.32V-41.5H422.02Q417.72 -41.5 414.72 -40.5Q411.72 -39.5 410.17 -37.7Q408.62 -35.9 408.62 -33.2Z M478.42 0H472.32Q469.32 0 467.17 -1.35Q465.02 -2.7 463.92 -5.2Q463.22 -6.8 463.02 -8.7H462.42Q460.92 -3.9 456.92 -1.35Q452.92 1.2 447.22 1.2Q439.22 1.2 434.82 -3Q430.42 -7.2 430.42 -14.3Q430.42 -19.5 432.97 -22.95Q435.52 -26.4 440.42 -28.15Q445.32 -29.9 452.62 -29.9H462.02V-34.3Q462.02 -39 459.42 -41.65Q456.82 -44.3 451.32 -44.3Q446.82 -44.3 443.87 -42.25Q440.92 -40.2 438.92 -37.2L432.42 -43.1Q435.02 -47.5 439.77 -50.35Q444.52 -53.2 452.02 -53.2Q462.02 -53.2 467.47 -48.45Q472.92 -43.7 472.92 -35V-8.9H478.42ZM462.02 -22.9H452.82Q447.12 -22.9 444.32 -21.1Q441.52 -19.3 441.52 -15.9V-14.1Q441.52 -10.7 443.92 -8.9Q446.32 -7.1 450.32 -7.1Q453.72 -7.1 456.32 -8.1Q458.92 -9.1 460.47 -11Q462.02 -12.9 462.02 -15.4Z M488.12 20V-52H499.02V-43.4H499.52Q501.12 -48.1 505.02 -50.65Q508.92 -53.2 514.12 -53.2Q520.72 -53.2 525.32 -49.95Q529.92 -46.7 532.37 -40.65Q534.82 -34.6 534.82 -26Q534.82 -17.5 532.37 -11.4Q529.92 -5.3 525.32 -2.05Q520.72 1.2 514.12 1.2Q508.92 1.2 505.12 -1.4Q501.32 -4 499.52 -8.6H499.02V20ZM510.82 -8Q516.52 -8 519.92 -11.75Q523.32 -15.5 523.32 -21.5V-30.5Q523.32 -36.5 519.92 -40.2Q516.52 -43.9 510.82 -43.9Q507.52 -43.9 504.87 -42.8Q502.22 -41.7 500.62 -39.7Q499.02 -37.7 499.02 -35V-17.4Q499.02 -14.4 500.62 -12.35Q502.22 -10.3 504.87 -9.15Q507.52 -8 510.82 -8Z M546.32 0V-74H557.22V-43.4H557.72Q559.42 -47.6 562.87 -50.4Q566.32 -53.2 572.32 -53.2Q580.32 -53.2 584.77 -47.9Q589.22 -42.6 589.22 -33V0H578.32V-31.7Q578.32 -37.8 575.97 -40.85Q573.62 -43.9 568.52 -43.9Q565.62 -43.9 563.07 -42.95Q560.52 -42 558.87 -40Q557.22 -38 557.22 -35V0Z"/></svg>
 </a>
 <div class="eyebrow">Polygraph · Press</div>
@@ -216,18 +44,18 @@ video { display: block; width: 100%; height: auto; border-radius: 10px; border: 
 <p class="lede">Everything for writing about Polygraph or showing it in a video: the short version, the facts, screenshots, clips and logos. Use any of it in your coverage without asking.</p>
 <div class="meta"><span>Polygraph <b>1.0</b> out <b>December 8, 2026</b></span><span>Blender <b>4.2</b> and later</span><span>Windows · macOS · Linux</span></div>
 <div class="kit"><a class="btn main" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-press-kit-1.0.zip">Download the press kit</a><span class="note">ZIP, 41.1 MB: images, screenshots, feature clips, logos and this page as text. The trailer and the GIFs are downloads of their own, below.</span></div>
-</div></header>
+</div></div>
 <div class="wrap">
 <nav class="index" aria-label="Contents"><div class="eyebrow">Contents</div><ol><li><a href="#short">The short version</a></li><li><a href="#facts">Facts</a></li><li><a href="#does">What it does</a></li><li><a href="#images">Images</a></li><li><a href="#screens">Screenshots</a></li><li><a href="#clips">Video and clips</a></li><li><a href="#logos">Logos</a></li><li><a href="#copies">Review copies</a></li><li><a href="#maker">Who makes it</a></li><li><a href="#use">Using this material</a></li></ol></nav>
-<main>
-<section id="short"><h2><span class="no">01</span>The short version</h2>
+<main id="main">
+<section id="short"><h2><span class="no" aria-hidden="true">01</span>The short version</h2>
 <p class="copy-label">In one line</p>
 <blockquote class="copy"><p>Polygraph is a Blender add-on that shows the vertex count your game engine will really get, checks it against a real platform budget, and tells you what to cut first.</p></blockquote>
 <p class="copy-label">In a paragraph</p>
 <blockquote class="copy"><p>Blender counts the vertices it stores. Unity, Unreal and glTF count them after splitting every UV seam and sharp edge, so a model can reach the engine several times heavier than Blender said. The default cube is 8 vertices in Blender and 24 in any engine. Polygraph counts the way each engine imports, live in the sidebar, and judges the scene against budgets taken from Meta, VRChat, Roblox, Apple, Epic and others. When a scene is over, it lists the changes that would save the most, largest first.</p></blockquote>
 </section>
 
-<section id="facts"><h2><span class="no">02</span>Facts</h2>
+<section id="facts"><h2><span class="no" aria-hidden="true">02</span>Facts</h2>
 <table class="facts"><tbody>
 <tr><th scope="row">Name</th><td>Polygraph</td></tr>
 <tr><th scope="row">What it is</th><td>An add-on (extension) for Blender</td></tr>
@@ -246,7 +74,7 @@ video { display: block; width: 100%; height: auto; border-radius: 10px; border: 
 </tbody></table>
 </section>
 
-<section id="does"><h2><span class="no">03</span>What it does</h2>
+<section id="does"><h2><span class="no" aria-hidden="true">03</span>What it does</h2>
 <ul class="short">
 <li>The vertex count glTF, Unity and Unreal will really load, live in the sidebar and in the viewport, with what each UV seam and sharp edge adds.</li>
 <li>A verdict against a real budget: Meta Quest, every VRChat rank, Roblox, Fortnite UEFN, visionOS, Second Life, The Sims 4 and more, or limits you type in.</li>
@@ -260,7 +88,7 @@ video { display: block; width: 100%; height: auto; border-radius: 10px; border: 
 <p>The <a href="../">guide</a> covers every panel, and the editions are compared side by side <a href="../#editions">at the end of it</a>.</p>
 </section>
 
-<section id="images"><h2><span class="no">04</span>Images</h2>
+<section id="images"><h2><span class="no" aria-hidden="true">04</span>Images</h2>
 <p>The images from the store pages, each with a line of its own. Click one for the full size.</p>
 <div class="grid">
 <figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-01-blender-says-8.jpg"><img src="thumbs/polygraph-01-blender-says-8.jpg" alt="Blender&#x27;s Statistics overlay says 8 vertices; Polygraph says Unity gets 24." loading="lazy" width="1200" height="600"></a><figcaption>Blender&#x27;s Statistics overlay says 8 vertices; Polygraph says Unity gets 24. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-01-blender-says-8.jpg">JPG, 2400 × 1200, 222 KB</a></figcaption></figure>
@@ -276,7 +104,7 @@ video { display: block; width: 100%; height: auto; border-radius: 10px; border: 
 <p class="credit">Scene: Gold, Blender Studio, CC-BY 4.0</p>
 </section>
 
-<section id="screens"><h2><span class="no">05</span>Screenshots</h2>
+<section id="screens"><h2><span class="no" aria-hidden="true">05</span>Screenshots</h2>
 <p>Whole Blender 5.3 windows, as they came out of the capture, with no labels added.</p>
 <div class="grid">
 <figure class="shot"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-cube-8-vs-24.png"><img src="thumbs/polygraph-cube-8-vs-24.jpg" alt="The default cube: 8 vertices in Blender, 24 in glTF." loading="lazy" width="1200" height="675"></a><figcaption>The default cube: 8 vertices in Blender, 24 in glTF. <a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-cube-8-vs-24.png">PNG, 2560 × 1440, 390 KB</a></figcaption></figure>
@@ -289,8 +117,8 @@ video { display: block; width: 100%; height: auto; border-radius: 10px; border: 
 <p class="credit">Every screenshot except the cube shows Gold by Blender Studio. Please credit it as: Scene: Gold, Blender Studio, CC-BY 4.0</p>
 </section>
 
-<section id="clips"><h2><span class="no">06</span>Video and clips</h2>
-<video controls preload="none" poster="../thumbs/polygraph-trailer-poster.jpg" width="1920" height="1080"><source src="../polygraph-trailer-preview.mp4" type="video/mp4"></video>
+<section id="clips"><h2><span class="no" aria-hidden="true">06</span>Video and clips</h2>
+<video aria-label="The Polygraph trailer" controls preload="none" poster="../thumbs/polygraph-trailer-poster.jpg" width="1920" height="1080"><source src="../polygraph-trailer-preview.mp4" type="video/mp4"></video>
 <p class="credit"><a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-trailer.mp4">The Polygraph trailer, MP4, 1920 × 1080, 84 seconds, 51.6 MB</a>. Music: "Synthwave Retro Pop 80s" by MondaMusic, under the Pixabay Content License. Every shot of Blender is a real recording of Polygraph on the free demo scene.</p>
 <p>Eleven short loops, one feature each. They play here when you scroll to them; download the MP4 for a video or the GIF for a page that only takes images.</p>
 <div class="grid">
@@ -306,37 +134,9 @@ video { display: block; width: 100%; height: auto; border-radius: 10px; border: 
 <figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="../thumbs/polygraph-10-pixel-preview.jpg" width="1280" height="720"><source src="../polygraph-10-pixel-preview.mp4" type="video/mp4"></video><figcaption><b>Pixel Preview.</b> See how many pixels a model really gets on the player's screen. <a class="get" href="../polygraph-10-pixel-preview.mp4" download>MP4, 1280 × 720, 2.6 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-10-pixel-preview.gif">GIF, 1280 × 720, 3.4 MB</a></figcaption></figure>
 <figure class="clip"><video class="loop" muted loop playsinline preload="none" poster="../thumbs/polygraph-11-edit-receipts.jpg" width="1280" height="720"><source src="../polygraph-11-edit-receipts.mp4" type="video/mp4"></video><figcaption><b>Edit receipts.</b> Every edit, priced in triangles the moment you make it. <a class="get" href="../polygraph-11-edit-receipts.mp4" download>MP4, 1280 × 720, 2.6 MB</a><a class="get" href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-11-edit-receipts.gif">GIF, 1280 × 720, 2.4 MB</a></figcaption></figure>
 </div>
-<script>
-(function () {
-  var vids = Array.prototype.slice.call(document.querySelectorAll("video.loop"));
-  if (!vids.length) return;
-  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
-  function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-  function setup() {
-    if (still && still.matches) {
-      // reduced motion: nothing moves by itself; the poster shows and the visitor can start a clip
-      vids.forEach(function (v) { v.pause(); v.controls = true; });
-      return null;
-    }
-    vids.forEach(function (v) { v.controls = false; v.muted = true; });
-    if (!("IntersectionObserver" in window)) { vids.forEach(play); return null; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.preload = "auto"; play(e.target); } else { e.target.pause(); }
-      });
-    }, { threshold: 0.35 });
-    vids.forEach(function (v) { io.observe(v); });
-    return io;
-  }
-  var io = setup();
-  if (still && still.addEventListener) {
-    still.addEventListener("change", function () { if (io) io.disconnect(); io = setup(); });
-  }
-})();
-</script>
 </section>
 
-<section id="logos"><h2><span class="no">07</span>Logos</h2>
+<section id="logos"><h2><span class="no" aria-hidden="true">07</span>Logos</h2>
 <p>Two lines that settle: a polygraph needle jumps when something is off and goes still when the answer is true. Use the dark versions on dark grounds and the light ones on white. Please don't recolour, stretch or redraw it. The <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-usage.pdf">usage sheet</a> (PDF, 89 KB) has clear space and the smallest sizes.</p>
 <div class="grid">
 <figure class="logo-tile dark"><div class="plate"><img src="logos/polygraph-logo-dark.svg" alt="Logo, for dark grounds" loading="lazy"></div><figcaption><b>Logo, for dark grounds</b><span><a href="logos/polygraph-logo-dark.svg" download>SVG</a> · <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-logo-dark-2560.png">PNG, 2560 px</a></span></figcaption></figure>
@@ -351,22 +151,27 @@ video { display: block; width: 100%; height: auto; border-radius: 10px; border: 
 <p>The app icon, as Polygraph shows it in Blender and on the stores: <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-app-icon-1024.png">PNG, 1024 px</a>.</p>
 </section>
 
-<section id="copies"><h2><span class="no">08</span>Review copies</h2>
+<section id="copies"><h2><span class="no" aria-hidden="true">08</span>Review copies</h2>
 <p>If you write about Blender or make videos about it, we'll send you Pro or Studio for free, no strings attached. Write to <a href="mailto:hello@duckinitiative.com">hello@duckinitiative.com</a> with a link to your channel or site.</p>
 <p>To try it in two minutes, there's a free demo scene: a small harbour with a budget that's broken, a fix that's one click away, and a shed the camera never sees. <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/polygraph-demo-1.0.zip">polygraph-demo-1.0.zip</a> (1.7 MB, CC0, opens in Blender 4.2 to 5.3).</p>
 </section>
 
-<section id="maker"><h2><span class="no">09</span>Who makes it</h2>
+<section id="maker"><h2><span class="no" aria-hidden="true">09</span>Who makes it</h2>
 <div class="studio"><img src="thumbs/duck-initiative-logo.jpg" alt="The Duck Initiative logo: a white duck diving into dark water, orange feet up" width="112" height="112" loading="lazy">
 <div><p style="margin-top:0">Waddle is the label Duck Initiative puts its Blender add-ons out under. Polygraph is the first of them. It exists because the vertex count Blender shows and the one a game engine loads are often far apart, and Blender doesn&#x27;t say so.</p>
 <p>Studio logo: <a href="https://github.com/atahangatz/polygraph/releases/download/press-kit-1.0/duck-initiative-logo-2048.png">PNG, 2048 px</a>.</p></div></div>
 </section>
 
-<section id="use"><h2><span class="no">10</span>Using this material</h2>
+<section id="use"><h2><span class="no" aria-hidden="true">10</span>Using this material</h2>
 <p>You're welcome to use the name, the logo, the images, the clips and the text on this page to talk about Polygraph: in reviews, tutorials, videos, thumbnails and articles. What you can't do is use them as the name or logo of your own product, or in a way that suggests we made or endorse something we didn't. The <a href="../license/#name">licence page</a> has the full wording.</p>
 <p>Blender is a trademark of the Blender Foundation. Polygraph is not made by or affiliated with it.</p>
 </section>
 </main>
 </div>
-<footer><div class="in"><nav class="links" aria-label="Site"><a href="../">Guide</a><a href="../license/">Licence</a><a href="../refunds/">Refunds</a><a href="./">Press</a><a href="mailto:support@duckinitiative.com">support@duckinitiative.com</a></nav>Polygraph is made by Waddle by Duck Initiative. Blender is a trademark of the Blender Foundation; Polygraph is not made by or affiliated with it.</div></footer>
+<footer><div class="in"><nav class="links" aria-label="Site"><a href="../">Guide</a><a href="../license/">Licence</a><a href="../refunds/">Refunds</a><a href="./">Press</a><a href="../press/">Press</a><a href="mailto:support@duckinitiative.com">support@duckinitiative.com</a></nav>
+<p>Polygraph is made by Waddle by Duck Initiative. Blender is a trademark of the Blender Foundation; Polygraph is not made by or affiliated with it.</p>
+<nav class="links site" aria-label="Duck Initiative"><a href="../../index.html">Duck Initiative</a><a href="../../waddle.html">Waddle, the shop</a><a href="../../addons.html">All add-ons</a></nav>
+</div></footer>
+<script src="../pg.js"></script>
+</body>
 </html>
