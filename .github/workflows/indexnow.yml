@@ -1,0 +1,78 @@
+name: IndexNow
+
+# When a page in sitemap.xml changes, ask Bing and the other IndexNow search
+# engines to crawl it again. The key file lives in the homepage repository:
+# https://duckinitiative.com/4e63042861bc3e25a5aae4fbc267c64e.txt
+# Run it by hand (Actions > IndexNow > Run workflow) to send every Polygraph page in the sitemap.
+
+on:
+  push:
+    branches: [main]
+    paths: ['**.html']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Give GitHub Pages time to publish
+        if: github.event_name == 'push'
+        run: sleep 90
+
+      - name: Send the changed pages
+        env:
+          KEY: 4e63042861bc3e25a5aae4fbc267c64e
+          PREFIX: polygraph/
+          BEFORE: ${{ github.event.before }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess, sys, urllib.error, urllib.request
+
+          site = "https://duckinitiative.com/"
+          key, prefix = os.environ["KEY"], os.environ["PREFIX"]
+
+          with urllib.request.urlopen(site + "sitemap.xml") as r:
+              listed = re.findall(r"<loc>([^<]+)</loc>", r.read().decode())
+
+          if os.environ["GITHUB_EVENT_NAME"] == "workflow_dispatch":
+              urls = [u for u in listed if u.startswith(site + prefix)]
+          else:
+              def changed(base):
+                  out = subprocess.run(["git", "diff", "--name-only", base, "HEAD", "--", "*.html"],
+                                       capture_output=True, text=True)
+                  return out.stdout.split() if out.returncode == 0 else None
+              before = os.environ.get("BEFORE", "")
+              subprocess.run(["git", "fetch", "-q", "--depth=1", "origin", before], capture_output=True)
+              files = changed(before) if before else None
+              if files is None:
+                  files = changed("HEAD~1") or []
+              urls = []
+              for f in files:
+                  path = prefix + f
+                  if path == "index.html" or path.endswith("/index.html"):
+                      path = path[: -len("index.html")]
+                  if site + path in listed:
+                      urls.append(site + path)
+
+          if not urls:
+              print("No page from the sitemap changed.")
+              sys.exit(0)
+
+          body = json.dumps({"host": "duckinitiative.com", "key": key,
+                             "keyLocation": site + key + ".txt", "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          try:
+              with urllib.request.urlopen(req) as r:
+                  print(r.status, "sent:", *urls, sep="\n  ")
+          except urllib.error.HTTPError as e:
+              print(e.code, e.read().decode()[:300])
+              sys.exit(1)
+          PY
